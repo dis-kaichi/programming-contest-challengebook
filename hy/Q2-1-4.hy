@@ -31,8 +31,8 @@
 (defn create-matrix [n m]
   (list (map list (partition (* [+INF+] (* n m)) m))))
 (defn setm! [matrix  row col value]
-  (let [x (nth matrix row)]
-    (assoc x col value)))
+  (setv x (nth matrix row))
+  (assoc x col value))
 (defn nthm [matrix row col]
   (nth (nth matrix row) col))
 (defn enqueue [_queue x]

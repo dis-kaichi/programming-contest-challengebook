@@ -28,7 +28,8 @@
 | 二分探索木                                  | Q2-4-5.hy                       | 77-78 |
 | 食物連鎖 (POJ 1182)                         | Q2-4-6.hy                       | 86 |
 | 二部グラフ判定                              | Q2-5-1.hy                       | 94 |
-| 最短路問題(Bellman-Ford)                    | Q2-5-2.hy                       | 95 |
+| 最短路問題(Bellman-Ford; shortest_path)     | Q2-5-2.hy                       | 95 |
+| 最短路問題(Bellman-Ford; find-negative-loop)| Q2-5-3.hy                       | 95 - 96 |
 | Roadblocks (POJ No.3255) | | |
 | Conscription (POJ No.3723) | | |
 | Layout (POJ No.3169) | | |

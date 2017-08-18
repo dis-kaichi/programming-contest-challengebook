@@ -63,14 +63,6 @@
                      (.split " ")
                      ((partial map int))))
 
-(defn create-matrix [n m &optional default]
-  (list (map list (partition (* [default] (* n m)) m))))
-(defn setm! [matrix  row col value]
-  (let [x (nth matrix row)]
-    (assoc x col value)))
-(defn nthm [matrix row col]
-  (nth (nth matrix row) col))
-
 (defn append-list [lst1 lst2]
   (+ lst1 [lst2]))
 

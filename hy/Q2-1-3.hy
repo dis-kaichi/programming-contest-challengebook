@@ -24,8 +24,8 @@
 (def +M+ (nth +NM+ 1))
 (def field (list (map list (cut data 1))))
 (defn setm! [matrix  row col value]
-  (let [x (nth matrix row)]
-    (assoc x col value)))
+  (setv x (nth matrix row))
+  (assoc x col value))
 (defn nthm [matrix row col]
   (nth (nth matrix row) col))
 

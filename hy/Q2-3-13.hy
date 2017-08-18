@@ -17,8 +17,8 @@
 (defn create-matrix [n m &optional [default 0]]
   (list (map list (partition (* [default] (* n m)) m))))
 (defn setm! [matrix  row col value]
-  (let [x (nth matrix row)]
-    (assoc x col value)))
+  (setv x (nth matrix row))
+  (assoc x col value))
 (defn nthm [matrix row col]
   (nth (nth matrix row) col))
 (def *dp* (create-matrix (inc +m+) (inc +n+) 0))
