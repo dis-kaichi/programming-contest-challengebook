@@ -1,7 +1,7 @@
 #!/usr/bin/env hy
 
 ;; ----------------------------------------
-;; 最短路問題(Dijkstra法)
+;; 単一始点最短路問題２（ダイクストラ法１）
 ;; ----------------------------------------
 (require [hy.contrib.loop [loop]])
 (import [functools [partial]])
