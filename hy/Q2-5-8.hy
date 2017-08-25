@@ -1,29 +1,38 @@
 #!/usr/bin/env hy
 
 ;; ----------------------------------------
-;; 単一始点最短路問題２（ダイクストラ法１）
+;; 最小全域木問題１(プリム法)
 ;; ----------------------------------------
 (require [hy.contrib.loop [loop]])
 (import [functools [partial]])
 
 (def data
-  ["7 10"
-   ;; A(0) ... G(6)
+  ["7"
    "0 1 2" ;; from to cost
-   "0 2 5"
-   "1 2 4"
-   "1 3 6"
-   "1 4 10"
-   "2 3 2"
+   "0 2 10"
+   "1 3 7"
+   "1 5 3"
+   "1 6 1"
+   "2 3 5"
+   "3 4 8"
    "3 5 1"
-   "4 5 3"
-   "4 6 5"
-   "5 6 9"])
+   "4 5 5"]) ;; cost 17
 
-(def (, +V+ +E+) (-> data
-                     first
-                     (.split " ")
-                     ((partial map int))))
+(def data
+  ["8"
+   "0 1 2" ;; from to cost
+   "0 2 10"
+   "1 3 7"
+   "1 5 3"
+   "1 6 1"
+   "2 3 5"
+   "3 4 8"
+   "3 5 1"
+   "4 5 5"
+   "6 7 3"
+   "1 7 2"]) ;; cost 19
+
+(def +V+ (-> data first int))
 
 (defn create-matrix [n m &optional default]
   (list (map list (partition (* [default] (* n m)) m))))
@@ -63,29 +72,34 @@
 
 (def *used* (* [True] +V+))
 
-(defn dijkstra [s]
+(def *min-cost* (* [0] +V+))
+
+(defn prim []
   (for [i (range +V+)]
-    (assoc *d* i +inf+)
+    (assoc *min-cost* i +inf+)
     (assoc *used* i False))
-  (assoc *d* s 0)
-  (loop []
+  (assoc *min-cost* 0 0)
+  (loop [[res 0]]
     (setv v -1)
     (for [u (range +V+)]
       (when (and (not (nth *used* u))
                  (or (= v -1)
-                     (< (nth *d* u) (nth *d* v))))
+                     (< (nth *min-cost* u)
+                        (nth *min-cost* v))))
         (setv v u)))
-    (when (!= v -1)
-      (assoc *used* v True)
-      (for [u (range +V+)]
-        (assoc *d* u (min (nth *d* u)
-                          (+ (nth *d* v)
-                             (nthm *cost* v u)))))
-      (recur))))
+    (if (= v -1)
+      res
+      (do
+        (assoc *used* v True)
+        (setv res (+ res (nth *min-cost* v)))
+        (for [u (range +V+)]
+          (assoc *min-cost* u (min (nth *min-cost* u)
+                                   (nthm *cost* v u))))
+        (recur res)))))
 
 (defn solve []
-  (dijkstra 0)
-  (print *d*)) ;; 各点までのコスト
+  (print (prim))
+  )
 
 (defmain
   [&rest args]

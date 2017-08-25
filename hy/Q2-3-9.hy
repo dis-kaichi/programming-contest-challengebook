@@ -40,13 +40,16 @@
   (nth (nth matrix row) col))
 
 (def +inf+ 10000)
-(def +dp-col+ (inc (* +n+ (max +vs+))))
-(def *dp* (create-matrix (inc +n+) +dp-col+ +inf+))
-(setm! *dp* 0 0 0) ;; dp[0][0] = 0
+(def +max-v+ (max +vs+))
+(def *dp* (create-matrix (inc +n+) (inc (* +n+ +max-v+)) 0))
 
 (defn solve []
+  (for [i (range (inc +n+))]
+    (for [j (range (inc (* +n+ +max-v+)))]
+      (setm! *dp* i j +inf)))
+  (setm! *dp* 0 0 0)
   (for [i (range +n+)]
-    (for [j (range +dp-col+)]
+    (for [j (range (inc (* +n+ +max-v+)))]
       (if (< j (nth +vs+ i))
         (setm! *dp* (inc i) j (nthm *dp* i j))
         (setm! *dp* (inc i) j (min (nthm *dp* i j)
@@ -54,7 +57,7 @@
                                       (nth +ws+ i)))))))
   (print (loop [[i 0]
                 [res 0]]
-           (if (>= i +dp-col+)
+           (if (>= i (inc (* +n+ +max-v+)))
              res
              (if (<= (nthm *dp* +n+ i) +W+)
                (recur (inc i) i)

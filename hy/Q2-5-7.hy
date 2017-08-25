@@ -1,7 +1,7 @@
 #!/usr/bin/env hy
 
 ;; ----------------------------------------
-;; 単一始点最短路問題２（ダイクストラ法１）
+;; 経路復元
 ;; ----------------------------------------
 (require [hy.contrib.loop [loop]])
 (import [functools [partial]])
@@ -63,10 +63,13 @@
 
 (def *used* (* [True] +V+))
 
+(def *prev* (* [0] +V+)) ;; 最短路直前の頂点
+
 (defn dijkstra [s]
   (for [i (range +V+)]
     (assoc *d* i +inf+)
-    (assoc *used* i False))
+    (assoc *used* i False)
+    (assoc *prev* i -1))
   (assoc *d* s 0)
   (loop []
     (setv v -1)
@@ -78,14 +81,25 @@
     (when (!= v -1)
       (assoc *used* v True)
       (for [u (range +V+)]
-        (assoc *d* u (min (nth *d* u)
-                          (+ (nth *d* v)
-                             (nthm *cost* v u)))))
+        (when (> (nth *d* u)
+                 (+ (nth *d* v) (nthm *cost* v u)))
+          (assoc *d* u (+ (nth *d* v) (nthm *cost* v u)))
+          (assoc *prev* u v)))
       (recur))))
+
+;; 頂点tへの最短路
+;; (指定した点tは含まないので注意)
+(defn get-path [t]
+  (loop [[index (nth *prev* t)]
+         [path []]]
+    (if (= index -1)
+      (doto path .reverse)
+      (recur (nth *prev* index) (+ path [index])))))
 
 (defn solve []
   (dijkstra 0)
-  (print *d*)) ;; 各点までのコスト
+  (for [i (range +V+)]
+    (print (get-path i))))
 
 (defmain
   [&rest args]

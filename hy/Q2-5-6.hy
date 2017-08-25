@@ -1,13 +1,13 @@
 #!/usr/bin/env hy
 
 ;; ----------------------------------------
-;; 単一始点最短路問題２（ダイクストラ法１）
+;; 全点対最短路問題（ワーシャル-フロイド法）
 ;; ----------------------------------------
 (require [hy.contrib.loop [loop]])
 (import [functools [partial]])
 
 (def data
-  ["7 10"
+  ["7"
    ;; A(0) ... G(6)
    "0 1 2" ;; from to cost
    "0 2 5"
@@ -20,10 +20,7 @@
    "4 6 5"
    "5 6 9"])
 
-(def (, +V+ +E+) (-> data
-                     first
-                     (.split " ")
-                     ((partial map int))))
+(def +V+ (-> data first int))
 
 (defn create-matrix [n m &optional default]
   (list (map list (partition (* [default] (* n m)) m))))
@@ -34,9 +31,6 @@
 
 (defn nthm [matrix row col]
   (nth (nth matrix row) col))
-
-(defn append-list [lst1 lst2]
-  (+ lst1 [lst2]))
 
 (def +inf+ 100000)
 
@@ -55,37 +49,23 @@
         (setm! matrix v2 v1 cost)
         (recur matrix (list (rest data)))))))
 
-(def *cost* (-> (rest data)
-                list
-                str-data-to-matrix))
+(def *d* (-> data
+             rest
+             list
+             str-data-to-matrix))
 
-(def *d* (* [0] +V+))
-
-(def *used* (* [True] +V+))
-
-(defn dijkstra [s]
-  (for [i (range +V+)]
-    (assoc *d* i +inf+)
-    (assoc *used* i False))
-  (assoc *d* s 0)
-  (loop []
-    (setv v -1)
-    (for [u (range +V+)]
-      (when (and (not (nth *used* u))
-                 (or (= v -1)
-                     (< (nth *d* u) (nth *d* v))))
-        (setv v u)))
-    (when (!= v -1)
-      (assoc *used* v True)
-      (for [u (range +V+)]
-        (assoc *d* u (min (nth *d* u)
-                          (+ (nth *d* v)
-                             (nthm *cost* v u)))))
-      (recur))))
+(defn warshall-floyd []
+  (for [k (range +V+)]
+    (for [i (range +V+)]
+      (for [j (range +V+)]
+        (setm! *d* i j
+               (min (nthm *d* i j)
+                    (+ (nthm *d* i k)
+                       (nthm *d* k j))))))))
 
 (defn solve []
-  (dijkstra 0)
-  (print *d*)) ;; 各点までのコスト
+  (warshall-floyd)
+  (print *d*)) ;; 全点間のコスト
 
 (defmain
   [&rest args]

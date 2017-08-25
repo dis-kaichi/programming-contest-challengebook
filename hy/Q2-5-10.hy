@@ -1,30 +1,26 @@
 #!/usr/bin/env hy
 
 ;; ----------------------------------------
-;; 単一始点最短路問題２（ダイクストラ法２）
+;; Roadblocks
 ;; ----------------------------------------
 (require [hy.contrib.loop [loop]])
 (import [functools [partial]])
 (import [heapq [heappush heappop]])
 
 (def data
-  ["7 20"
+  ["4 4"
    ;; A(0) ... G(6)
-   "0 1 2" ;; from to cost
-   "0 2 5"
-   "1 2 4"
-   "1 3 6"
-   "1 4 10"
-   "2 3 2"
-   "3 5 1"
-   "4 5 3"
-   "4 6 5"
-   "5 6 9"])
+   "0 1 100"
+   "1 2 250"
+   "1 3 200"
+   "2 3 100"])
 
-(def (, +V+ +E+) (-> data
+(def (, +N+ +R+) (-> data
                      first
                      (.split " ")
                      ((partial map int))))
+
+(def +E+ (* 2 +R+)) ;; 無向グラフなので辺数を２倍にする
 
 (defclass Edge []
   [_to 0
@@ -34,16 +30,10 @@
     (setv (. self _to) to)
     (setv (. self _cost) cost))
 
-  #@(property
-  (defn to [self]))
-  #@(to.getter
-  (defn to [self]
-    (. self _to)))
-  #@(property
-  (defn cost [self]))
-  #@(cost.getter
-  (defn cost [self]
-    (. self _cost)))
+  #@(property (defn to [self]))
+  #@(to.getter (defn to [self] (. self _to)))
+  #@(property (defn cost [self]))
+  #@(cost.getter (defn cost [self] (. self _cost)))
   (defn --str-- [self]
     (.format "{0} {1}" (. self _to) (. self _cost))))
 
@@ -52,13 +42,14 @@
 (def *G*
   (loop [[i 0]
          [lst []]]
-    (if (>= i +V+)
+    (if (>= i +N+)
       lst
       (recur (inc i) (+ lst [[]])))))
 
 (def *que* [])
 
-(def *d* (* [0] +V+))
+(def *dist* (* [0] +N+))  ;; 最短距離
+(def *dist2* (* [0] +N+)) ;; ２番目の最短距離
 
 (defn appendm! [matrix row value]
   ;; 指定行に値を追加する
@@ -83,7 +74,6 @@
         (value-of-edge-tuple True)
         ((partial insert-matrix *G*)))))
 
-
 (defn heap-push [x]
   (heappush *que* x))
 (defn heap-pop []
@@ -94,37 +84,40 @@
 (defn nthm [matrix row col]
   (nth (nth matrix row) col))
 
-(defn dijkstra [s]
-  (for [i (range +V+)]
-    (assoc *d* i +inf+))
-  (assoc *d* s 0)
-  (heap-push [0 s])
-  (loop []
-    (if (empty-que?)
-      ""
-      (do
-        (setv (, distance vertex) (heap-pop))
-        (if (< (nth *d* vertex) distance)
-          (recur)
-          (do
-            (for [i (range (len (nth *G* vertex)))]
-              (setv edge (nthm *G* vertex i))
-              (when (> (nth *d* (. edge to))
-                       (+ (nth *d* vertex)
-                          (. edge cost)))
-                (assoc *d* (. edge to) (+ (nth *d* vertex) (. edge cost)))
-                (heap-push [(nth *d* (. edge to)) (. edge to)])))
-            (recur)))))))
-
 (defn solve []
   ;; データを配列に入れる
   (-> data
       (cut 1)
       list
       parse-and-insert)
-  ;; Dijkstra
-  (dijkstra 0)
-  (print *d*))
+  ;; 計算
+  (for [i (range +N+)]
+    (assoc *dist* i +inf+)
+    (assoc *dist2* i +inf+))
+  (assoc *dist* 0 0)
+  (heap-push [0 0])
+  (loop []
+    (if (empty-que?)
+      (print (nth *dist2* (dec +N+)))
+      (do
+        (setv (, d v) (heap-pop))
+        (if (< (nth *dist2* v) d)
+          (recur)
+          (do
+            (for [i (range (len (nth *G* v)))]
+              (setv e (nthm *G* v i))
+              (setv d2 (+ d (. e cost)))
+              (when (> (nth *dist* (. e to)) d2)
+                ;; swap
+                (setv d-to (nth *dist* (. e to)))
+                (assoc *dist* (. e to) d2)
+                (setv d2 d-to)
+                (heap-push [(nth *dist* (. e to)) (. e to)]))
+              (when (and (> (nth *dist2* (. e to)) d2)
+                         (< (nth *dist* (. e to)) d2))
+                (assoc *dist2* (. e to) d2)
+                (heap-push [(nth *dist2* (. e to)) (. e to)])))
+            (recur)))))))
 
 (defmain
   [&rest args]
