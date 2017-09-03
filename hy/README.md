@@ -39,8 +39,8 @@
 | Layout (POJ No.3169)                        | Q2-5-12.hy                      | 105-106 |
 | 線分上の格子点の個数                        | Q2-6-1.hy                       | 107-108 |
 | 双六                                        | Q2-6-2.hy                       | 109 |
-| 素数判定 | | |
-| 素数の個数 | | |
+| 素数判定                                    | Q2-6-3.hy                       | 111 |
+| 素数の個数                                  | Q2-6-4.hy                       | 112 |
 | 区間内の素数の個数 | | |
 | Carmichael Numbers (UVa No.10006) | | |
 | Minimum Scalar Product (2008 Round1 A A) | | |
