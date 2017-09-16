@@ -43,9 +43,9 @@
 | 素数の個数                                  | Q2-6-4.hy                       | 112 |
 | 区間内の素数の個数                          | Q2-6-5.hy                       | 113 |
 | Carmichael Numbers (UVa No.10006)           | Q2-6-6.hy                       | 115-116 |
-| Minimum Scalar Product (2008 Round1 A A) | | |
-| Crazy Rows (2009 Round2 A) | | |
-| Bride the Prisoners (2009 Round 1C C) | | |
+| Minimum Scalar Product (2008 Round1 A A)    | Q2-7-1.hy                       | 118 |
+| Crazy Rows (2009 Round2 A)                  | Q2-7-2.hy                       | 120 |
+| Bride the Prisoners (2009 Round 1C C)       | Q2-7-3.hy                       | 122-123 |
 | Millionaire (2008 APAC local onsites C) | | |
 | lower_bound | | |
 | Cable master (POJ No.1064) | | |
