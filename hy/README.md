@@ -46,7 +46,7 @@
 | Minimum Scalar Product (2008 Round1 A A)    | Q2-7-1.hy                       | 118 |
 | Crazy Rows (2009 Round2 A)                  | Q2-7-2.hy                       | 120 |
 | Bride the Prisoners (2009 Round 1C C)       | Q2-7-3.hy                       | 122-123 |
-| Millionaire (2008 APAC local onsites C) | | |
+| Millionaire (2008 APAC local onsites C)     | Q2-7-4.hy                       | 125 |
 | lower_bound | | |
 | Cable master (POJ No.1064) | | |
 | Aggressive cows (POJ No.2456) | | |
