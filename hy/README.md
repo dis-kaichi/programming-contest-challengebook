@@ -47,10 +47,10 @@
 | Crazy Rows (2009 Round2 A)                  | Q2-7-2.hy                       | 120 |
 | Bride the Prisoners (2009 Round 1C C)       | Q2-7-3.hy                       | 122-123 |
 | Millionaire (2008 APAC local onsites C)     | Q2-7-4.hy                       | 125 |
-| lower_bound | | |
-| Cable master (POJ No.1064) | | |
-| Aggressive cows (POJ No.2456) | | |
-| 平均最大化 | | |
+| lower_bound                                 | Q3-1-1.hy                       | 128-129 |
+| Cable master (POJ No.1064)                  | Q3-1-2.hy                       | 130-131 |
+| Aggressive cows (POJ No.2456)               | Q3-1-3.hy                       | 132 |
+| 平均最大化                                  | Q3-1-4.hy                       | 133-134 |
 | Subsequence (POJ No.3061) | | |
 | Jessica's Reading Problem (POJ No.3320) | | |
 | Face The Right Way (POJ No.3276) | | |
