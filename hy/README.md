@@ -23,7 +23,7 @@
 | 最長増加部分列問題                          | Q2-3-12.hy                      | 64-65 |
 | 分割数                                      | Q2-3-13.hy                      | 66-67 |
 | 重複組み合わせ                              | Q2-3-14.hy                      | 67-68 |
-| ヒープ木                                    | Q2-4-1.hy, Q2-4-2.hy            | 71-73 |
+| ヒープ木                                    | Q2-4-1.hy<br>Q2-4-2.hy            | 71-73 |
 | Expedition (POJ 2431)                       | Q2-4-3.hy                       | 74 |
 | 二分探索木                                  | Q2-4-5.hy                       | 77-78 |
 | 食物連鎖 (POJ 1182)                         | Q2-4-6.hy                       | 86 |
@@ -51,8 +51,8 @@
 | Cable master (POJ No.1064)                  | Q3-1-2.hy                       | 130-131 |
 | Aggressive cows (POJ No.2456)               | Q3-1-3.hy                       | 132 |
 | 平均最大化                                  | Q3-1-4.hy                       | 133-134 |
-| Subsequence (POJ No.3061) | | |
-| Jessica's Reading Problem (POJ No.3320) | | |
+| Subsequence (POJ No.3061)                   | Q3-2-1.hy<br>Q3-2-2.hy          | 136-137 |
+| Jessica's Reading Problem (POJ No.3320)     | Q3-2-3.hy                       | 138 |
 | Face The Right Way (POJ No.3276) | | |
 | Fliptile (POJ No.3279) | | |
 | Physics Experiment (POJ No.3684) | | |
