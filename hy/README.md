@@ -53,12 +53,12 @@
 | 平均最大化                                  | Q3-1-4.hy                       | 133-134 |
 | Subsequence (POJ No.3061)                   | Q3-2-1.hy<br>Q3-2-2.hy          | 136-137 |
 | Jessica's Reading Problem (POJ No.3320)     | Q3-2-3.hy                       | 138 |
-| Face The Right Way (POJ No.3276) | | |
-| Fliptile (POJ No.3279) | | |
-| Physics Experiment (POJ No.3684) | | |
-| 4 Values whose Sum is 0 (POJ No.2785) | | |
-| 巨大ナップサック | | |
-| 領域の個数 | | |
+| Face The Right Way (POJ No.3276)            | Q3-2-4.hy                       | 140-141 |
+| Fliptile (POJ No.3279)                      | Q3-2-5.hy                       | 142-143 |
+| Physics Experiment (POJ No.3684)            | Q3-2-6.hy                       | 147 |
+| 4 Values whose Sum is 0 (POJ No.2785)       | Q3-2-7.hy                       | 148 |
+| 巨大ナップサック                            | Q3-2-8.hy                       | 149-150 |
+| 領域の個数                                  | Q3-2-9.hy                       | 151-152 |
 | Crane (POJ 2991) | | |
 | バブルソートの交換回数 | | |
 | A Simple Problem with Integers (POJ 3468) | | |
