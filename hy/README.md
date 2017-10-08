@@ -59,7 +59,8 @@
 | 4 Values whose Sum is 0 (POJ No.2785)       | Q3-2-7.hy                       | 148 |
 | 巨大ナップサック                            | Q3-2-8.hy                       | 149-150 |
 | 領域の個数                                  | Q3-2-9.hy                       | 151-152 |
-| Crane (POJ 2991) | | |
+| セグメント木によるRMQの実装                 | Q3-3-1.hy                       | 155-156 |
+| Crane (POJ 2991)                            | Q3-3-2.hy                       | 157-158 |
 | バブルソートの交換回数 | | |
 | A Simple Problem with Integers (POJ 3468) | | |
 | K-th Number (POJ 2104) | | |
