@@ -61,9 +61,9 @@
 | 領域の個数                                  | Q3-2-9.hy                       | 151-152 |
 | セグメント木によるRMQの実装                 | Q3-3-1.hy                       | 155-156 |
 | Crane (POJ 2991)                            | Q3-3-2.hy                       | 157-158 |
-| バブルソートの交換回数 | | |
-| A Simple Problem with Integers (POJ 3468) | | |
-| K-th Number (POJ 2104) | | |
+| バブルソートの交換回数                      | Q3-3-3.hy                       | 162-163 |
+| A Simple Problem with Integers (POJ 3468)   | Q3-3-4.hy<br>Q3-3-5.hy          | 164-166 |
+| K-th Number (POJ 2104)                      | Q3-3-6.hy<br>Q3-3-7.hy          | 169-172 |
 | 巡回セールスマン問題 | | |
 | Traveling by Stagecoach (POJ No.2686) | | |
 | ドミノ敷き詰め | | |
