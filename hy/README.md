@@ -65,8 +65,8 @@
 | A Simple Problem with Integers (POJ 3468)   | Q3-3-4.hy<br>Q3-3-5.hy          | 164-166 |
 | K-th Number (POJ 2104)                      | Q3-3-6.hy<br>Q3-3-7.hy          | 169-172 |
 | 巡回セールスマン問題                        | Q3-4-1.hy<br>Q3-4-2.hy          | 174-175 |
-| Traveling by Stagecoach (POJ No.2686) | | |
-| ドミノ敷き詰め | | |
+| Traveling by Stagecoach (POJ No.2686)       | Q3-4-3.hy                       | 176 |
+| ドミノ敷き詰め                              | Q3-4-4.hy | 178-179 |
 | フィボナッチ数列 | | |
 | Blocks (POJ No.3734) | | |
 | グラフの長さkのパスの総数 | | |
