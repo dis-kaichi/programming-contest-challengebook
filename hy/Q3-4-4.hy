@@ -16,8 +16,6 @@
 
 (def +m+ 100000) ;;
 
-(def color {})
-
 (defn map-int [xs] (list (map int xs)))
 
 (defn conj [coll x]
