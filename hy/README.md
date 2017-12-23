@@ -67,7 +67,7 @@
 | 巡回セールスマン問題                        | Q3-4-1.hy<br>Q3-4-2.hy          | 174-175 |
 | Traveling by Stagecoach (POJ No.2686)       | Q3-4-3.hy                       | 176 |
 | ドミノ敷き詰め                              | Q3-4-4.hy<br>Q3-4-5.hy          | 178-179 |
-| フィボナッチ数列 | | |
+| フィボナッチ数列                            | Q3-4-6.hy                       | 181 |
 | Blocks (POJ No.3734) | | |
 | グラフの長さkのパスの総数 | | |
 | Matrix Power Series (POJ No.3233) | | |
