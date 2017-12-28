@@ -68,10 +68,10 @@
 | Traveling by Stagecoach (POJ No.2686)       | Q3-4-3.hy                       | 176 |
 | ドミノ敷き詰め                              | Q3-4-4.hy<br>Q3-4-5.hy          | 178-179 |
 | フィボナッチ数列                            | Q3-4-6.hy                       | 181 |
-| Blocks (POJ No.3734) | | |
-| グラフの長さkのパスの総数 | | |
-| Matrix Power Series (POJ No.3233) | | |
-| inimizing maximizer (POJ No.1769) | | |
+| Blocks (POJ No.3734)                        | Q3-4-7.hy                       | 182-183 |
+| グラフの長さkのパスの総数                   | Q3-4-8.hy                       | 183-184 |
+| Matrix Power Series (POJ No.3233)           | Q3-4-9.hy                       | 184-185 |
+| inimizing maximizer (POJ No.1769)           | Q3-4-10.hy                      | 186-187 |
 | 最大通信量 | | |
 | 仕事の割り当て | | |
 | 二人組 | | |
