@@ -23,14 +23,9 @@
 (def +N+ (nth +NM+ 0))
 (def +M+ (nth +NM+ 1))
 (def field (list (map list (cut data 1))))
-(defn setm! [matrix  row col value]
-  (setv x (nth matrix row))
-  (assoc x col value))
-(defn nthm [matrix row col]
-  (nth (nth matrix row) col))
 
 (defn dfs [x y]
-  (setm! field x y ".")
+  (setv (get field x y) ".")
   (for [dx (range -1 2)]
     (for [dy (range -1 2)]
       (def nx (+ x dx))
@@ -39,7 +34,7 @@
                  (< nx +N+)
                  (<= 0 ny)
                  (< ny +M+)
-                 (= (nthm field nx ny) "W"))
+                 (= (get field nx ny) "W"))
         (dfs nx ny)
       ))))
 
@@ -47,7 +42,7 @@
   (def res 0)
   (for [i (range 0 +N+)]
     (for [j (range 0 +M+)]
-      (when (= (nthm field i j) "W")
+      (when (= (get field i j) "W")
         (dfs i j)
         (def res (inc res)))))
   (print res))

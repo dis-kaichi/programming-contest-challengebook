@@ -15,15 +15,6 @@
 
 (def +m+ 10007)
 
-(defn nthm [matrix row col]
-  (-> matrix
-      (nth row)
-      (nth col)))
-
-(defn setm! [matrix  row col value]
-  (setv x (nth matrix row))
-  (assoc x col value))
-
 (defn create-matrix [n m &optional [default 0]]
   (ap-pipe (* [default] (* n m))
            (partition it m)
@@ -36,9 +27,9 @@
   (for [i (range (len A))]
     (for [k (range (len B))]
       (for [j (range (len (nth B 0)))]
-        (setm! C i j (% (+ (nthm C i j)
-                           (* (nthm A i k) (nthm B k j)))
-                        +m+)))))
+        (setv (get C i j) (% (+ (get C i j)
+                                (* (get A i k) (get B k j)))
+                             +m+)))))
   C)
 
 ;; A^n
@@ -46,7 +37,7 @@
   (setv order (len A))
   (setv B (create-matrix order order 0))
   (for [i (range order)]
-    (setm! B i i 1))
+    (setv (get B i i) 1))
   (while (> n 0)
     (when (& n 1)
       (setv B (mul B A)))
@@ -71,13 +62,13 @@
   (setv B (create-matrix (* 2 n) (* 2 n) 0))
   (for [i (range n)]
     (for [j (range n)]
-      (setm! B i j (nthm A i j)))
-    (setm! B (+ n i) i 1)
-    (setm! B (+ n i) (+ n i) 1))
+      (setv (get B i j) (get A i j)))
+    (setv (get B (+ n i) i) 1)
+    (setv (get B (+ n i) (+ n i)) 1))
   (setv B (pow B (+ k 1))) ;; I+A+A^2+...+A^k
   (for [i (range n)]
     (for [j (range n)]
-      (setv a (% (nthm B (+ n i) j) +m+))
+      (setv a (% (get B (+ n i) j) +m+))
       ;; Iを引く
       (when (= i j)
         (setv a (% (+ a +m+ -1) +m+)))
