@@ -1,11 +1,13 @@
 #!/usr/bin/env hy
 
 ;; ----------------------------------------
-;; 最大通信量(FordFullkerson法)
+;; 最大通信量(Dinic法)
 ;; ----------------------------------------
 
 (import [lib.operations [safe-get]])
-(import [lib.fordfullkerson [max-flow add-edge]])
+(import [lib.dinic [max-flow add-edge]])
+
+
 
 (defn solve []
   (setv matrix
@@ -22,4 +24,3 @@
 (defmain
   [&rest args]
   (solve))
-
