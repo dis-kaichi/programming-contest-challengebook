@@ -11,6 +11,14 @@
     (except [e KeyError]
             default)))
 
+(defn conj [coll x]
+  (+ coll [x]))
+
+(defn push [-list element]
+  (.append -list element)
+  -list)
+
+
 ;; Macros
 (defmacro +=!  [dic-or-list key value]
   `(common=! + ~dic-or-list ~key ~value))

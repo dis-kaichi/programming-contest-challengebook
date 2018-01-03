@@ -5,7 +5,7 @@
 ;; ----------------------------------------
 (import sys)
 (require [hy.contrib.loop [loop]])
-(import [operations [safe-get]])
+(import [operations [safe-get push]])
 
 (def +inf+ (. sys maxsize))
 
@@ -37,10 +37,6 @@
 
 (def G {})      ;; グラフの隣接リスト表現
 (def used {})   ;; DFSで既に調べたかのフラグ
-
-(defn push [-list element]
-  (.append -list element)
-  -list)
 
 (defn add-edge [from to cap]
   (assoc G from (push (safe-get G from []) (Edge to cap (len (safe-get G to [])))))
