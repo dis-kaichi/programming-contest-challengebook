@@ -73,9 +73,9 @@
 | Matrix Power Series (POJ No.3233)           | Q3-4-9.hy                       | 184-185 |
 | inimizing maximizer (POJ No.1769)           | Q3-4-10.hy                      | 186-187 |
 | 最大通信量                                  | Q3-5-1.hy<br>Q3-5-2.hy          | 190-195 |
-| 仕事の割り当て | | |
-| 二人組 | | |
-| 最小コスト通信 | | |
+| 仕事の割り当て                              | Q3-5-3.hy<br>Q3-5-4.hy          | 196-197 |
+| 二人組                                      | ---                             | ---     |
+| 最小コスト通信                              | Q3-5-5.hy | 200-204 |
 | Asteroids (POJ No.3041) | | |
 | Evacuation (POJ No.3057) | | |
 | Dining (POJ No.3281) | | |

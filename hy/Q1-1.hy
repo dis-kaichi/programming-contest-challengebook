@@ -1,36 +1,45 @@
 #!/usr/bin/env hy
 
-(def data
-  ["3"
-   "10"
-   "1 3 5"])
+;; ----------------------------------------
+;; くじびき
+;; ----------------------------------------
+(import [lib.inpututils [split-with-space map-int]])
 
-(def data
-  ["3"
-   "9"
-   "1 3 5"])
-
-(def +N+ (int (nth data 0)))
-(def +M+ (int (nth data 1)))
-(def +K+ (list (map int (.split (nth data 2)))))
+(defn solver [data]
+  (setv n (-> data first int))
+  (setv m (-> data second int))
+  (setv k (-> data (nth 2) split-with-space map-int))
+  (setv f False)
+  (for [x1 (range n)]
+    (for [x2 (range n)]
+      (for [x3 (range n)]
+        (for [x4 (range n)]
+          (when (= (sum [(nth k x1)
+                         (nth k x2)
+                         (nth k x3)
+                         (nth k x4)
+                         ])
+                   m)
+            (setv f True))))))
+  (if f
+    "Yes"
+    "No"))
 
 (defn solve []
-  (def f False)
-  (for [x1 (range +N+)]
-    (for [x2 (range +N+)]
-      (for [x3 (range +N+)]
-        (for [x4 (range +N+)]
-          (when (= (sum [(nth +K+ x1)
-                         (nth +K+ x2)
-                         (nth +K+ x3)
-                         (nth +K+ x4)
-                         ])
-                   +M+)
-            (def f True))))))
-  (if f
-    (print "Yes")
-    (print "No"))
-  )
+  ;; Data
+  (setv data1
+        ["3"
+         "10"
+         "1 3 5"]) ;; Yes
+  (setv data2
+        ["3"
+         "9"
+         "1 3 5"]) ;; No
+  ;; Example1
+  (print "Example1 : " (solver data1))
+
+  ;; Example2
+  (print "Example2 : " (solver data2)))
 
 (defmain
   [&rest args]

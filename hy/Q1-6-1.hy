@@ -1,32 +1,41 @@
 #!/usr/bin/env hy
 
+;; ----------------------------------------
 ;; 三角形
+;; ----------------------------------------
+(import [lib.inpututils [split-with-space map-int]])
 
-(def data
-  ["5"
-   "2 3 4 5 10"])
-;(def data
-;  ["4"
-;   "4 5 10 20"])
-
-(def +N+ (int (nth data 0)))
-(def +A+ (list (map int (.split (nth data 1)))))
+(defn solver [data]
+  ;; Parameter
+  (setv n (-> data first int))
+  (setv a (-> data second split-with-space map-int))
+  ;; Main
+  (setv ans 0)
+  (for [i (range n)]
+    (for [j (range (inc i) n)]
+      (for [k (range (inc j) n)]
+        (setv ai (nth a i))
+        (setv aj (nth a j))
+        (setv ak (nth a k))
+        (setv len (sum [ai aj ak]))
+        (setv ma (max [ai aj ak]))
+        (setv res (- len ma))
+        (when (< ma res)
+          (setv ans (max ans len))))))
+  ans)
 
 (defn solve []
-  (def ans 0)
-  ;;
-  (for [i (range +N+)]
-    (for [j (range (inc i) +N+)]
-      (for [k (range (inc j) +N+)]
-        (def ai (nth +A+ i))
-        (def aj (nth +A+ j))
-        (def ak (nth +A+ k))
-        (def len (sum [ai aj ak]))
-        (def ma (max [ai aj ak]))
-        (def res (- len ma))
-        (when (< ma res)
-          (def ans (max ans len))))))
-  (print ans))
+  ;; Data
+  (setv data1
+        ["5"
+         "2 3 4 5 10"]) ;; 12
+  (setv data2
+        ["4"
+         "4 5 10 20"])  ;; 0
+  ;; Example1
+  (print "Example1 : " (solver data1))
+  ;; Example2
+  (print "Example2 : " (solver data2)))
 
 (defmain
   [&rest args]

@@ -1,37 +1,34 @@
 #!/usr/bin/env hy
 
+;; ----------------------------------------
 ;; Ants (POJ No.1852)
+;; ----------------------------------------
+(import [lib.inpututils [split-with-space map-int]])
 
-(def data
-  ["10"
-   "3"
-   "2 6 7"])
-
-(def +L+ (int (nth data 0)))
-(def +n+ (int (nth data 1)))
-(def +x+ (list (map int (.split (nth data 2)))))
-
-(defn calc-min-time-core [xs min-t]
-  (if (empty? xs)
-    min-t
-    (do
-      (def xi (first xs))
-      (calc-min-time-core
-        (list (rest xs))
-        (max min-t (min xi (- +L+ xi)))))))
-
-(defn calc-max-time-core [xs max-t]
-  (if (empty? xs)
-    max-t
-    (do
-      (def xi (first xs))
-      (calc-max-time-core
-        (list (rest xs))
-        (max max-t (max xi (- +L+ xi)))))))
+(defn solver [data]
+  ;; Parameter
+  (setv L (-> data first int))
+  (setv n (-> data second int))
+  (setv x (-> data (nth 2) split-with-space map-int))
+  ;; Main
+  ;; 最小の時間を計算
+  (setv min-t 0)
+  (for [i (range n)]
+    (setv min-t (max min-t (min (get x i) (- L (get x i))))))
+  ;; 最大の時間を計算
+  (setv max-t 0)
+  (for [i (range n)]
+    (setv max-t (max max-t (max (get x i) (- L (get x i))))))
+  (, min-t max-t))
 
 (defn solve []
-  (print (calc-min-time-core +x+ 0)
-         (calc-max-time-core +x+ 0)))
+  (setv data1
+        ["10"
+         "3"
+         "2 6 7"])
+  ;;
+  (setv (, min-time max-time) (solver data1))
+  (print min-time max-time))
 
 (defmain
   [&rest args]
