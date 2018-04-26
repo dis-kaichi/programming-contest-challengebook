@@ -75,8 +75,8 @@
 | 最大通信量                                  | Q3-5-1.hy<br>Q3-5-2.hy          | 190-195 |
 | 仕事の割り当て                              | Q3-5-3.hy<br>Q3-5-4.hy          | 196-197 |
 | 二人組                                      | ---                             | ---     |
-| 最小コスト通信                              | Q3-5-5.hy | 200-204 |
-| Asteroids (POJ No.3041) | | |
+| 最小コスト通信                              | Q3-5-5.hy<br>Q3-5-6.hy          | 200-204 |
+| Asteroids (POJ No.3041)                     | Q3-5-7.hy                       | 206     |
 | Evacuation (POJ No.3057) | | |
 | Dining (POJ No.3281) | | |
 | Dual Core CPU (POJ No.3469) | | |
