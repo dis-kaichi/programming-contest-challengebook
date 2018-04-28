@@ -77,7 +77,7 @@
 | 二人組                                      | ---                             | ---     |
 | 最小コスト通信                              | Q3-5-5.hy<br>Q3-5-6.hy          | 200-204 |
 | Asteroids (POJ No.3041)                     | Q3-5-7.hy                       | 206     |
-| Evacuation (POJ No.3057) | | |
+| Evacuation (POJ No.3057)                    | Q3-5-8.hy<br>Q3-5-9.hy          | 207-210 |
 | Dining (POJ No.3281) | | |
 | Dual Core CPU (POJ No.3469) | | |
 | Farm Tour (POJ No.2135) | | |

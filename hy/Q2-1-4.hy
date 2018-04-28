@@ -35,13 +35,6 @@
   (assoc x col value))
 (defn nthm [matrix row col]
   (nth (nth matrix row) col))
-(defn enqueue [_queue x]
-  (.append _queue x))
-(defn dequeue [_queue]
-  (try
-    (_queue.pop 0)
-    (except [e Exception]
-            None)))
 (defn find-element [_list elm]
   ;; 存在すればindex, 存在しなければNoneを返す
   (try
@@ -75,8 +68,9 @@
 (def +dy+ [0 1 0 -1])
 
 
+(import [lib.queue [Queue]])
 (defn bfs []
-  (def que [])
+  (setv que (Queue))
   (def check-points (find-start-and-goal))
   (def start (first check-points))
   (def goal (second check-points))
@@ -84,11 +78,11 @@
   (def sy (second start))
   (def gx (first goal))
   (def gy (second goal))
-  (enqueue que (P sx sy))
+  (.push que (P sx sy))
   (setm! +d+ sx sy 0)
   (loop []
-    (when (!= 0 (len que))
-      (def p (dequeue que))
+    (when (not (.empty? que))
+      (def p (.pop que))
       (if (and (= gx p.x)
                (= gy p.y))
         (nthm +d+ gx gy) ;; break
@@ -101,7 +95,7 @@
                      (< ny +M+)
                      (!= "#" (nthm +maze+ nx ny))
                      (= +INF+ (nthm +d+ nx ny)))
-            (enqueue que (P nx ny))
+            (.push que (P nx ny))
             (setm! +d+ nx ny (inc (nthm +d+ p.x p.y)))
             (recur)))))))
 

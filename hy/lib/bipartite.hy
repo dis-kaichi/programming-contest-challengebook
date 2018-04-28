@@ -58,3 +58,16 @@
         (+= res 1)))
     )
   res)
+
+;; クリア
+(defn clear-graph []
+  (global G)
+  (setv G {}))
+
+(defn clear-match []
+  (global match)
+  (setv match {}))
+
+(defn clear-used []
+  (global used)
+  (setv used {}))
