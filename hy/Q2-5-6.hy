@@ -6,7 +6,7 @@
 (require [hy.contrib.loop [loop]])
 (import [functools [partial]])
 
-(def data
+(setv data
   ["7"
    ;; A(0) ... G(6)
    "0 1 2" ;; from to cost
@@ -20,7 +20,7 @@
    "4 6 5"
    "5 6 9"])
 
-(def +V+ (-> data first int))
+(setv +V+ (-> data first int))
 
 (defn create-matrix [n m &optional default]
   (list (map list (partition (* [default] (* n m)) m))))
@@ -32,7 +32,7 @@
 (defn nthm [matrix row col]
   (nth (nth matrix row) col))
 
-(def +inf+ 100000)
+(setv +inf+ 100000)
 
 (defn str-data-to-matrix [vertex-info-list]
   vertex-info-list
@@ -49,7 +49,7 @@
         (setm! matrix v2 v1 cost)
         (recur matrix (list (rest data)))))))
 
-(def *d* (-> data
+(setv *d* (-> data
              rest
              list
              str-data-to-matrix))

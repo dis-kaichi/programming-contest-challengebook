@@ -7,9 +7,9 @@
 (require [hy.contrib.loop [loop]])
 (require[hy.extra.anaphoric [ap-pipe]])
 
-(def +m+ 10000)
+(setv +m+ 10000)
 
-(def data
+(setv data
   ["10"])
 
 ;; A * B

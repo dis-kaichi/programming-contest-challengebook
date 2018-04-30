@@ -7,7 +7,7 @@
 (import [functools [partial]])
 (import [math [floor]])
 
-(def data
+(setv data
   ["4 11" ;; a b
    ])
 

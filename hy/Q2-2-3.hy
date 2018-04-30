@@ -5,17 +5,17 @@
 ;; ----------------------------------------
 (require [hy.contrib.loop [loop]])
 
-(def data
+(setv data
   ["6"
    "ACDBCB"])
 
-(def +N+ (int (nth data 0)))
-(def +S+ (list (map list (nth data 1))))
+(setv +N+ (int (nth data 0)))
+(setv +S+ (list (map list (nth data 1))))
 
 (defn solve-core [a b]
   (loop [[i 0]]
-    (def sa (nth +S+ (+ a i)))
-    (def sb (nth +S+ (- b i)))
+    (setv sa (nth +S+ (+ a i)))
+    (setv sb (nth +S+ (- b i)))
     (if (<= (+ a i) b)
       (if (< sa sb)
         True

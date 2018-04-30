@@ -7,7 +7,7 @@
 (import [functools [partial]])
 (import [math [floor sqrt pow]])
 
-(def data
+(setv data
   ["6"
    "-45 -41 -36 -36 26 -32"
    "22 -27 53 30 -38 -54"

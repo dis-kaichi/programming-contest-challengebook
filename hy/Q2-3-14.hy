@@ -6,15 +6,15 @@
 (require [hy.contrib.loop [loop]])
 (import [functools [partial]])
 
-(def data
+(setv data
   ["3 3 10000"
    "1 2 3"]) ;; 6
-(def (, +n+ +m+ +M+) (-> data
+(setv (, +n+ +m+ +M+) (-> data
                          (nth 0)
                          (.split " ")
                          ((partial map int))))
 
-(def +a+ (-> data
+(setv +a+ (-> data
              (nth 1)
              (.split " ")
              ((partial map int))
@@ -28,7 +28,7 @@
 (defn nthm [matrix row col]
   (nth (nth matrix row) col))
 
-(def *dp* (create-matrix (inc +n+) (inc +m+)))
+(setv *dp* (create-matrix (inc +n+) (inc +m+)))
 
 (defn solve []
   (for [i (range (inc +n+))]

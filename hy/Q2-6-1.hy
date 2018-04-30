@@ -6,7 +6,7 @@
 (require [hy.contrib.loop [loop]])
 (import [functools [partial]])
 
-(def data
+(setv data
   ["1 11" ;; P1
    "5 3"  ;; P2
    ])
@@ -27,6 +27,9 @@
     [(. self x) (. self y)])
   (defn --str-- [self] (.format "{0} {1}" (. self x) (. self y))))
 
+(defn of-point [xs]
+  (Point #* xs))
+
 (defn gcd [x y]
   (loop [[a x]
          [b y]]
@@ -39,12 +42,12 @@
                first
                (.split " ")
                ((partial map int))
-               (->> (apply Point))))
+               of-point))
   (setv p2 (-> data
                second
                (.split " ")
                ((partial map int))
-               (->> (apply Point))))
+               of-point))
   (setv dx (abs (- (. p1 x) (. p2 x))))
   (setv dy (abs (- (. p1 y) (. p2 y))))
   (print (dec (gcd dx dy))) ;; Answer

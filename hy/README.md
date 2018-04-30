@@ -78,10 +78,10 @@
 | 最小コスト通信                              | Q3-5-5.hy<br>Q3-5-6.hy          | 200-204 |
 | Asteroids (POJ No.3041)                     | Q3-5-7.hy                       | 206     |
 | Evacuation (POJ No.3057)                    | Q3-5-8.hy<br>Q3-5-9.hy          | 207-210 |
-| Dining (POJ No.3281) | | |
-| Dual Core CPU (POJ No.3469) | | |
-| Farm Tour (POJ No.2135) | | |
-| Evacuation Plan (POJ No.2175) | | |
+| Dining (POJ No.3281)                        | Q3-5-10.hy                      | 211-212 |
+| Dual Core CPU (POJ No.3469)                 | Q3-5-11.hy                      | 214     |
+| Farm Tour (POJ No.2135)                     | Q3-5-12.hy                      | 215     |
+| Evacuation Plan (POJ No.2175)               | Q3-5-13.hy                      | 216-218 |
 | The Windy's (POJ No.3688) | | |
 | Intervals (POJ No.3680) | | |
 | Jack Straws (POJ 1127) | | |

@@ -9,7 +9,7 @@
 (import [lib.operations [safe-get conj]])
 (import [lib.bipartite [bipartite-matching add-edge]])
 
-(def data
+(setv data
   ["3 3" ;; N K(N : uの部分, K : vの部分)
    "1 1 0" ;; 1 : uとvに関連がある, 0 : ない
    "1 0 1"

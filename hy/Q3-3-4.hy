@@ -6,9 +6,9 @@
 (require [hy.contrib.loop [loop]])
 (import [math [floor]])
 
-(def +dat-size+ (dec (<< 1 18)))
+(setv +dat-size+ (dec (<< 1 18)))
 
-(def data
+(setv data
   ["8 2"
    "5 3 7 9 6 4 1 2"
    "C 0 4 1"

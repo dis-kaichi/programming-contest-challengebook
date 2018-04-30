@@ -6,7 +6,7 @@
 (require [hy.contrib.loop [loop]])
 (import [functools [partial]])
 
-(def data
+(setv data
   ["7 10"
    ;; A(0) ... G(6)
    "0 1 2" ;; from to cost
@@ -20,7 +20,7 @@
    "4 6 5"
    "5 6 9"])
 
-(def (, +V+ +E+) (-> data
+(setv (, +V+ +E+) (-> data
                      first
                      (.split " ")
                      ((partial map int))))
@@ -38,7 +38,7 @@
 (defn append-list [lst1 lst2]
   (+ lst1 [lst2]))
 
-(def +inf+ 100000)
+(setv +inf+ 100000)
 
 (defn str-data-to-matrix [vertex-info-list]
   vertex-info-list
@@ -55,15 +55,15 @@
         (setm! matrix v2 v1 cost)
         (recur matrix (list (rest data)))))))
 
-(def *cost* (-> (rest data)
+(setv *cost* (-> (rest data)
                 list
                 str-data-to-matrix))
 
-(def *d* (* [0] +V+))
+(setv *d* (* [0] +V+))
 
-(def *used* (* [True] +V+))
+(setv *used* (* [True] +V+))
 
-(def *prev* (* [0] +V+)) ;; 最短路直前の頂点
+(setv *prev* (* [0] +V+)) ;; 最短路直前の頂点
 
 (defn dijkstra [s]
   (for [i (range +V+)]

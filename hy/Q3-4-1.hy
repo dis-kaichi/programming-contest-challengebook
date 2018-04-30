@@ -8,9 +8,9 @@
 (import [math [floor ceil]])
 (require [hy.extra.anaphoric [ap-pipe ap-map-when]])
 
-(def +inf+ 1000000)
+(setv +inf+ 1000000)
 
-(def data
+(setv data
   ["5"
    "0 3 0 4 0"
    "0 0 5 0 0"
@@ -46,7 +46,7 @@
                (inc index)))))
     )
 
-(def dp {})
+(setv dp {})
 
 (defn safe-get [-dict -key &optional [default -1]]
   (try

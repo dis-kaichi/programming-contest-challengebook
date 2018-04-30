@@ -7,12 +7,12 @@
 (import [functools [partial]])
 (import [math [floor sqrt pow]])
 
-(def data
+(setv data
   ["4"
    "11"
    "8.02 7.43 4.57 5.39"]) ;; 2.00
 
-(def +inf+ 100000000) ;; 適当
+(setv +inf+ 100000000) ;; 適当
 
 (defn truncate-div [n d]
   (setv c (/ n d))

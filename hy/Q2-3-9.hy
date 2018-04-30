@@ -5,18 +5,18 @@
 ;; ----------------------------------------
 (require [hy.contrib.loop [loop]])
 
-(def data
+(setv data
   ["3 7"
    "3 4 4 5 2 3"]) ; 9
 
-(def data
+(setv data
   ["4 5"
    "2 3 1 2 3 4 2 2"]) ; 7
 
-(def (, +n+ +W+) (-> (nth data 0)
+(setv (, +n+ +W+) (-> (nth data 0)
                      (.split " ")
                      ((fn [x] (map int x)))))
-(def (, +ws+ +vs+) (-> (nth data 1)
+(setv (, +ws+ +vs+) (-> (nth data 1)
                        (.split " ")
                        ;; 数値化
                        ((fn [x] (map int x)))
@@ -39,14 +39,14 @@
 (defn nthm [matrix row col]
   (nth (nth matrix row) col))
 
-(def +inf+ 10000)
-(def +max-v+ (max +vs+))
-(def *dp* (create-matrix (inc +n+) (inc (* +n+ +max-v+)) 0))
+(setv +inf+ 10000)
+(setv +max-v+ (max +vs+))
+(setv *dp* (create-matrix (inc +n+) (inc (* +n+ +max-v+)) 0))
 
 (defn solve []
   (for [i (range (inc +n+))]
     (for [j (range (inc (* +n+ +max-v+)))]
-      (setm! *dp* i j +inf)))
+      (setm! *dp* i j +inf+)))
   (setm! *dp* 0 0 0)
   (for [i (range +n+)]
     (for [j (range (inc (* +n+ +max-v+)))]

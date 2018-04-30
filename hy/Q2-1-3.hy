@@ -5,7 +5,7 @@
 ;; ----------------------------------------
 (require [hy.contrib.loop [loop]])
 
-(def data
+(setv data
   ["10 12"
    "W........WW."
    ".WWW.....WWW"
@@ -19,17 +19,17 @@
    "..W.......W."
    ])
 
-(def +NM+ (list (map int (.split (nth data 0)))))
-(def +N+ (nth +NM+ 0))
-(def +M+ (nth +NM+ 1))
-(def field (list (map list (cut data 1))))
+(setv +NM+ (list (map int (.split (nth data 0)))))
+(setv +N+ (nth +NM+ 0))
+(setv +M+ (nth +NM+ 1))
+(setv field (list (map list (cut data 1))))
 
 (defn dfs [x y]
   (setv (get field x y) ".")
   (for [dx (range -1 2)]
     (for [dy (range -1 2)]
-      (def nx (+ x dx))
-      (def ny (+ y dy))
+      (setv nx (+ x dx))
+      (setv ny (+ y dy))
       (when (and (<= 0 nx)
                  (< nx +N+)
                  (<= 0 ny)
@@ -39,12 +39,12 @@
       ))))
 
 (defn solve []
-  (def res 0)
+  (setv res 0)
   (for [i (range 0 +N+)]
     (for [j (range 0 +M+)]
       (when (= (get field i j) "W")
         (dfs i j)
-        (def res (inc res)))))
+        (setv res (inc res)))))
   (print res))
 
 (defmain

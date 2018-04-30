@@ -6,10 +6,10 @@
 (require [hy.contrib.loop [loop]])
 (import [functools [partial]])
 (import [math [floor sqrt pow]])
-(def data
+(setv data
   ["1 0.5 500000"]) ;; 0.500000
 
-(def data
+(setv data
   ["3 0.75 600000"]) ;; 0.843750
 
 (defn create-matrix [n m &optional default]
@@ -19,8 +19,8 @@
   (setv x (nth matrix row))
   (assoc x col value))
 
-(def +max-m+ 5) ;; Small
-(def *dp* (create-matrix 2 (inc (<< 1 +max-m+))))
+(setv +max-m+ 5) ;; Small
+(setv *dp* (create-matrix 2 (inc (<< 1 +max-m+))))
 
 (defn nthm [matrix row col]
   (-> matrix
@@ -34,7 +34,7 @@
                       (->> (zip [int float int]))
                       list
                       ((partial map (fn [(, func value)]
-                                      (apply func [value]))))
+                                      (func #* [value]))))
                       list))
   ;; Solve Main
   (setv n (<< 1 M)) ;; 左Shift(倍化)

@@ -6,11 +6,11 @@
 (import [sys])
 (import [math [floor]])
 
-(def +max-n+ (<< 1 17))
+(setv +max-n+ (<< 1 17))
 
 ;; セグメント木を持つグローバル配列
-(def *n* 0)
-(def *dat* (* [0] (* 2 (dec +max-n+))))
+(setv *n* 0)
+(setv *dat* (* [0] (* 2 (dec +max-n+))))
 
 (defmacro *= [x value] `(setv ~x (* ~x ~value)))
 (defmacro += [x value] `(setv ~x (+ ~x ~value)))

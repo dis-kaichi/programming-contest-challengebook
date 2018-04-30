@@ -7,13 +7,13 @@
 (require [hy.contrib.loop [loop]])
 (require[hy.extra.anaphoric [ap-pipe]])
 
-(def data
+(setv data
   [
    ;"1" ;; 2
    "2" ;; 6
    ])
 
-(def +m+ 10007)
+(setv +m+ 10007)
 
 (defn nthm [matrix row col]
   (-> matrix

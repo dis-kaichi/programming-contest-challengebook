@@ -7,16 +7,16 @@
 (import [functools [partial]])
 (import [math [floor sqrt pow]])
 
-(def data
+(setv data
   ["22 37"]
   ;["22801763489" "22801787297"]
   )
 
-(def +max-l+ 100)
-(def +max-sqrt-b+ 100)
+(setv +max-l+ 100)
+(setv +max-sqrt-b+ 100)
 
-(def *is-prime-small* (* [False] +max-sqrt-b+))
-(def *is-prime* (* [False] +max-l+))
+(setv *is-prime-small* (* [False] +max-sqrt-b+))
+(setv *is-prime* (* [False] +max-l+))
 
 (defn segment-sieve [a b]
   (for [i (range (-> b sqrt floor))]

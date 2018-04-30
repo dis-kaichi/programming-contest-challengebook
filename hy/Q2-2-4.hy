@@ -5,14 +5,14 @@
 ;; ----------------------------------------
 (require [hy.contrib.loop [loop]])
 
-(def data
+(setv data
   ["6"
    "10"
    "1 7 15 20 30 50"])
 
-(def +N+ (-> (nth data 0) int))
-(def +R+ (-> (nth data 1) int))
-(def +X+ (-> (nth data 2)
+(setv +N+ (-> (nth data 0) int))
+(setv +R+ (-> (nth data 1) int))
+(setv +X+ (-> (nth data 2)
              (.split " ")
              ((fn [x] (map int x)))
              list))

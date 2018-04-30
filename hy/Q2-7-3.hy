@@ -7,11 +7,11 @@
 (import [functools [partial]])
 (import [math [floor sqrt pow]])
 
-(def data
+(setv data
   ["8 1"
    "3"]) ;; 7
 
-(def data
+(setv data
   ["20 3"
    "3 6 14"]) ;; 35
 
@@ -27,10 +27,10 @@
       (nth row)
       (nth col)))
 
-(def +max-q+ 5) ;; Small
-(def +int-max+ 100000) ;; 適当
+(setv +max-q+ 5) ;; Small
+(setv +int-max+ 100000) ;; 適当
 
-(def *dp* (create-matrix (+ 1 +max-q+)
+(setv *dp* (create-matrix (+ 1 +max-q+)
                          (+ 2 +max-q+)))
 
 (defn solve []

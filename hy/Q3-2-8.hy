@@ -7,7 +7,7 @@
 (import [functools [partial]])
 (import [math [floor sqrt pow]])
 
-(def data
+(setv data
   ["4"
    "2 1 2 3"
    "3 2 4 2"
@@ -53,7 +53,7 @@
         (+= sv (nth v j))))
     (.append ps [sw sv]))
   ;; 無駄な要素を取り除く
-  (apply ps.sort [] {"key" first})
+  (.sort ps #* [] #** {"key" first})
   (setv m 1)
   (for [i (range 1 (<< 1 n2))]
     (when (< (second (nth ps (dec m)))

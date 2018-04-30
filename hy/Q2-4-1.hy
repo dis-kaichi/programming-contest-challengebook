@@ -6,13 +6,13 @@
 (require [hy.contrib.loop [loop]])
 (import [functools [partial]])
 
-(def +n+ 10000)
-(def *heap* (* [0] +n+))
-(def *size* 0)
+(setv +n+ 10000)
+(setv *heap* (* [0] +n+))
+(setv *size* 0)
 
 (defn push [x]
   (global *size*)
-  (def new-i
+  (setv new-i
     (loop [[i *size*]]
       (if (<= i 0)
         i
@@ -31,7 +31,7 @@
   (setv ret (nth *heap* 0))
   (setv *size* (dec *size*))
   (setv x (nth *heap* *size*))
-  (def new-i
+  (setv new-i
     (loop [[i 0]]
       (if (>= (inc (* i 2)) *size*)
         i ;; Break

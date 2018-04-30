@@ -5,7 +5,7 @@
 ;; ----------------------------------------
 (require [hy.contrib.loop [loop]])
 
-(def data
+(setv data
   ["4"
    "3 1 4 2"]) ;; 3
 

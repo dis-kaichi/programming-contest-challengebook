@@ -7,7 +7,7 @@
 (require [hy.contrib.loop [loop]])
 (import [operations [safe-get push]])
 
-(def +inf+ (. sys maxsize))
+(setv +inf+ (. sys maxsize))
 
 (defclass Edge []
   [-to 0
@@ -35,8 +35,8 @@
     (.format "{0} {1} {2}" (. self -to) (. self -cap) (. self -rev)))
   )
 
-(def G {})      ;; グラフの隣接リスト表現
-(def used {})   ;; DFSで既に調べたかのフラグ
+(setv G {})      ;; グラフの隣接リスト表現
+(setv used {})   ;; DFSで既に調べたかのフラグ
 
 (defn add-edge [from to cap]
   (assoc G from (push (safe-get G from []) (Edge to cap (len (safe-get G to [])))))

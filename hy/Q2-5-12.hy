@@ -6,24 +6,24 @@
 (require [hy.contrib.loop [loop]])
 (import [functools [partial]])
 
-(def data
+(setv data
   ["4 2 1" ;; N ML MD
    "1 3 10" ;; (AL, BL, DL)
    "2 4 20" ;; (AL, BL, DL)
    "2 3 3"]);; (AD, BD, DD)
 
-(def (, +N+ +ML+ +MD+) (-> data
+(setv (, +N+ +ML+ +MD+) (-> data
                            first
                            (.split " ")
                            ((partial map int))))
 
 ;; Init like/dislike list
-(def *AL* [])
-(def *BL* [])
-(def *DL* [])
-(def *AD* [])
-(def *BD* [])
-(def *DD* [])
+(setv *AL* [])
+(setv *BL* [])
+(setv *DL* [])
+(setv *AD* [])
+(setv *BD* [])
+(setv *DD* [])
 ;; like-list
 (defn init-like-list [values]
   (for [value values]
@@ -50,9 +50,9 @@
 ;;(print *AL* *BL* *DL*)
 ;;
 
-(def *d* (* [0] +N+)) ;; shortest-path
+(setv *d* (* [0] +N+)) ;; shortest-path
 
-(def +inf+ 100000)
+(setv +inf+ 100000)
 
 (defn check-result [res]
   (if (< (nth *d* 0) 0)

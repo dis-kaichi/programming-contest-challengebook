@@ -6,10 +6,10 @@
 (require [hy.contrib.loop [loop]])
 (import [functools [partial]])
 
-(def data
+(setv data
   ["4 3 10000"]) ;; 4
 
-(def (, +n+ +m+ +M+) (-> data
+(setv (, +n+ +m+ +M+) (-> data
                          (nth 0)
                          (.split " ")
                          ((partial map int))))
@@ -21,7 +21,7 @@
   (assoc x col value))
 (defn nthm [matrix row col]
   (nth (nth matrix row) col))
-(def *dp* (create-matrix (inc +m+) (inc +n+) 0))
+(setv *dp* (create-matrix (inc +m+) (inc +n+) 0))
 (setm! *dp* 0 0 1)
 
 (defn solve []

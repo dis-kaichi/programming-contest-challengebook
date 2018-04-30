@@ -7,18 +7,18 @@
 (import [functools [partial]])
 (import [math [floor sqrt pow]])
 
-(def data
+(setv data
   ["2"
    "10"
    "11"]) ;; 0
 
-(def data
+(setv data
   ["3"
    "001"
    "100"
    "010"]) ;; 2
 
-(def data
+(setv data
   ["4"
    "1110"
    "1100"

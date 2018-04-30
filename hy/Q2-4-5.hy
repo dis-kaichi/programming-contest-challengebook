@@ -10,9 +10,9 @@
   [_value 0
    _left None
    _right None
-   value (apply property [] {"doc" "value property"})
-   right (apply property [] {"doc" "right property"})
-   left (apply property [] {"doc" "left property"})
+   value (property #* [] #** {"doc" "value property"})
+   right (property #* [] #** {"doc" "right property"})
+   left (property #* [] #** {"doc" "left property"})
    ]
   #@(value.setter
   (defn value [self value]

@@ -8,11 +8,11 @@
 (import [math [floor sqrt pow]])
 (import [collections [defaultdict]])
 
-(def data
+(setv data
   ["5"
    "1 8 8 8 1"]) ;; 2(1,2ページ目を読む)
 
-(def data
+(setv data
   ["7"
    "1 5 3 1 1 4 1"]) ;; 5 (2-6ページ目を読む)
 

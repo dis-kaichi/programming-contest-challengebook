@@ -6,15 +6,15 @@
 (require [hy.contrib.loop [loop]])
 (import [math [floor ceil]])
 
-(def data
+(setv data
   ["7 3"
    "1 5 2 6 3 7 4"
    "2 5 3"
    "4 4 1"
    "1 7 3"]) ;; 5 6 3
 
-(def +B+ 1000)   ;; バケットのサイズ
-(def +max-n+ 10000) ;;
+(setv +B+ 1000)   ;; バケットのサイズ
+(setv +max-n+ 10000) ;;
 
 (defn map-int [xs] (list (map int xs)))
 

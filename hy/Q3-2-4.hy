@@ -8,12 +8,12 @@
 (import [functools [partial]])
 (import [math [floor sqrt pow]])
 
-(def data
+(setv data
   ["7"
    "BBFBFBB"]) ;; (3, 3)
 
-(def +max-n+ 5000)
-(def *f* (* [0] +max-n+))
+(setv +max-n+ 5000)
+(setv *f* (* [0] +max-n+))
 
 (defn non-neg? [x]
   (or (zero? x)

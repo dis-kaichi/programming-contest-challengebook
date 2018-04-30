@@ -7,7 +7,7 @@
 (import [functools [partial]])
 (import [heapq [heappush heappop]])
 
-(def data
+(setv data
   ["7 20"
    ;; A(0) ... G(6)
    "0 1 2" ;; from to cost
@@ -21,7 +21,7 @@
    "4 6 5"
    "5 6 9"])
 
-(def (, +V+ +E+) (-> data
+(setv (, +V+ +E+) (-> data
                      first
                      (.split " ")
                      ((partial map int))))
@@ -47,18 +47,18 @@
   (defn --str-- [self]
     (.format "{0} {1}" (. self _to) (. self _cost))))
 
-(def +inf+ 1000000)
+(setv +inf+ 1000000)
 
-(def *G*
+(setv *G*
   (loop [[i 0]
          [lst []]]
     (if (>= i +V+)
       lst
       (recur (inc i) (+ lst [[]])))))
 
-(def *que* [])
+(setv *que* [])
 
-(def *d* (* [0] +V+))
+(setv *d* (* [0] +V+))
 
 (defn appendm! [matrix row value]
   ;; 指定行に値を追加する

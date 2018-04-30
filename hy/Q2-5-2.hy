@@ -44,7 +44,7 @@
   (defn --str-- [self]
     (.format "{0} {1} {2}" (. self _from) (. self _to) (. self _cost))))
 
-(def data
+(setv data
   ["7 20" ;; vertexs edges(無向グラフなので2倍する)
    ;; A(0) ... G(6)
    "0 1 2" ;; from to cost
@@ -58,7 +58,7 @@
    "4 6 5"
    "5 6 9"])
 
-(def (, +V+ +E+) (-> data
+(setv (, +V+ +E+) (-> data
                      first
                      (.split " ")
                      ((partial map int))))
@@ -92,23 +92,23 @@
          list)))
 
 (defn value-of-edge [lst]
-  (apply Edge lst))
+  (Edge #* lst))
 
 (defn create-edges [edges]
   (-> edges
       ((partial map value-of-edge))
       list))
 
-(def *es* (-> data
+(setv *es* (-> data
               (cut 1)
               list
               read-str-graph
               append-reverse-edges
               create-edges))
 
-(def *d* (* [0] +V+))
+(setv *d* (* [0] +V+))
 
-(def +inf+ 100000)
+(setv +inf+ 100000)
 
 (defn shortest-path [s]
   (for [i (range +V+)]

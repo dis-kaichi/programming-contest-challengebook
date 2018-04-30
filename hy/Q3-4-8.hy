@@ -7,7 +7,7 @@
 (require [hy.contrib.loop [loop]])
 (require[hy.extra.anaphoric [ap-pipe]])
 
-(def data
+(setv data
   [
    "4 2" ;; 
    "0 1 1 0"
@@ -16,7 +16,7 @@
    "1 0 0 0"
    ]) ;; 6
 
-(def +m+ 10007)
+(setv +m+ 10007)
 
 (defn create-matrix [n m &optional [default 0]]
   (ap-pipe (* [default] (* n m))

@@ -8,14 +8,14 @@
 (import [sys])
 (import [math [floor cos sin pi]])
 
-(def data
+(setv data
   ["3 2"      ;; -10.00 5.00
    "5 5 5"    ;; -5.00 10.00
    "1 2"
    "270 90"])
 
-(def +st-size+ (dec (<< 1 15)))
-(def +max-n+ (<< 1 17))
+(setv +st-size+ (dec (<< 1 15)))
+(setv +max-n+ (<< 1 17))
 
 (defn double [x] (* x 2))
 (defn floor-half [x] (floor (/ x 2)))

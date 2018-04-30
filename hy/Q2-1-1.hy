@@ -17,7 +17,7 @@
 
 ;; 3.1. メモ化(フィボナッチ)
 ;; (*) データをソートする必要がなければ辞書でメモ化するとよい
-(def +memo+ {})
+(setv +memo+ {})
 (defn fib-memo [n]
   ;; 大きい数だと再帰で爆発する
   (if (<= n 1)
@@ -30,7 +30,7 @@
         (get +memo+ n)))))
 
 ;; 3.2. メモ化(フィボナッチ)改良版
-(def +memo2+ {})
+(setv +memo2+ {})
 (defn fib-memo2 [x]
   ;; 0から算出するので再帰で爆発しない
   (loop [[n 0]
@@ -57,7 +57,7 @@
     (except [e Exception]
             None)))
 (defn stack-test []
-  (def stack [])
+  (setv stack [])
   (push stack 1)
   (push stack 2)
   (push stack 3)

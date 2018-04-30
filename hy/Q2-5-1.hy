@@ -6,20 +6,20 @@
 (require [hy.contrib.loop [loop]])
 (import [functools [partial]])
 
-(def data
+(setv data
   ["3" ;; vertex
    "0 1"
    "0 2"
    "1 2"]) ;; No
 
-(def data
+(setv data
   ["4" ;; vertex
    "0 1"
    "1 2"
    "2 3"
    "0 3"]) ;; Yes
 
-(def data
+(setv data
   ["4" ;; vertex
    "0 1"
    "0 2"
@@ -53,7 +53,7 @@
                  list
                  ((partial append-list graph)))))))
 
-(def +V+ (-> data first int))
+(setv +V+ (-> data first int))
 
 (defn create-empty-lists [n]
   (loop [[i 0]
@@ -73,13 +73,13 @@
         (.append (nth matrix end) start)
         (recur (-> remain-edges rest list) matrix)))))
 
-(def *G* (-> data
+(setv *G* (-> data
              (cut 1)
              list
              read-str-graph
              create-graph-matrix))
 
-(def *color* (* [0] +V+))
+(setv *color* (* [0] +V+))
 
 (defn dfs [v c]
   (assoc *color* v c)

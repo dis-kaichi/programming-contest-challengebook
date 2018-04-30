@@ -9,7 +9,7 @@
 (import [math [floor sqrt pow]])
 (import [heapq [heappush heappop]])
 
-(def data
+(setv data
   ["10 10 5"
    "1 1 4 9 10"
    "6 10 4 9 10"
@@ -50,8 +50,8 @@
     (assoc x2 i (.index xs (nth x2 i))))
   (len xs))
 
-(def +dx+ [1 0 -1 0])
-(def +dy+ [0 1 0 -1])
+(setv +dx+ [1 0 -1 0])
+(setv +dy+ [0 1 0 -1])
 
 (defn solve []
   ;; Parameters

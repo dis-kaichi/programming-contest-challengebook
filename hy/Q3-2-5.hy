@@ -8,7 +8,7 @@
 (import [functools [partial]])
 (import [math [floor sqrt pow]])
 
-(def data
+(setv data
   ["4 4"
    "1 0 0 1"    ;; 0 0 0 0
    "0 1 1 0"    ;; 1 0 0 1
@@ -16,8 +16,8 @@
    "1 0 0 1"])  ;; 0 0 0 0
 
 ;; 隣接するマスの座標
-(def +dx+ [-1 0 0 0 1])
-(def +dy+ [0 -1 0 1 0])
+(setv +dx+ [-1 0 0 0 1])
+(setv +dy+ [0 -1 0 1 0])
 
 (defn create-matrix [n m &optional default]
   (ap-pipe (* [default] (* n m))
@@ -34,11 +34,11 @@
   (setv x (nth matrix row))
   (assoc x col value))
 
-(def (, +max-n+ +max-m+) [15 15])
+(setv (, +max-n+ +max-m+) [15 15])
 ;; 最適解保存用
-(def *opt* (create-matrix +max-m+ +max-n+))
+(setv *opt* (create-matrix +max-m+ +max-n+))
 ;; 作業用
-(def *flip* (create-matrix +max-m+ +max-n+))
+(setv *flip* (create-matrix +max-m+ +max-n+))
 
 (defn split-with-space [x]
   (.split x " "))

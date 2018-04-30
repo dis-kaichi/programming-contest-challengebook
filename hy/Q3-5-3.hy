@@ -9,7 +9,7 @@
 (import [lib.operations [safe-get conj]])
 (import [lib.dinic [max-flow add-edge]])
 
-(def data
+(setv data
   ["3 3" ;; N K
    "1 1 0"
    "1 0 1"

@@ -5,14 +5,14 @@
 ;; ----------------------------------------
 (require [hy.contrib.loop [loop]])
 
-(def data
+(setv data
   ["3 7"
    "3 4 4 5 2 3"])
 
-(def (, +n+ +W+) (-> (nth data 0)
+(setv (, +n+ +W+) (-> (nth data 0)
                      (.split " ")
                      ((fn [x] (map int x)))))
-(def (, +ws+ +vs+) (-> (nth data 1)
+(setv (, +ws+ +vs+) (-> (nth data 1)
                        (.split " ")
                        ;; 数値化
                        ((fn [x] (map int x)))
@@ -27,7 +27,7 @@
                        ;; iterator => list
                        ((fn [x] (map list x)))))
 
-(def *dp* (* [0] (inc +W+)))
+(setv *dp* (* [0] (inc +W+)))
 
 (defn solve []
   (for [i (range +n+)]

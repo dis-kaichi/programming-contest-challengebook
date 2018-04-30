@@ -28,21 +28,21 @@
 (defn heap-pop [que]
   (. (heappop que) _x))
 
-(def data
+(setv data
   ["4 25 10"
    "10 14 20 21"
    "10 5 2 4"])
-(def (, +N+ +L+ +P+) (-> data
+(setv (, +N+ +L+ +P+) (-> data
                          (nth 0)
                          (.split " ")
                          ((partial map int))))
-(def *A* (-> data
+(setv *A* (-> data
              (nth 1)
              (.split " ")
              ((partial map int))
              list))
 
-(def *B* (-> data
+(setv *B* (-> data
              (nth 2)
              (.split " ")
              ((partial map int))

@@ -8,15 +8,15 @@
 (import [math [floor sqrt pow]])
 
 
-(def data
+(setv data
   ["1 10 10 100"]) ;; 4.95
-(def data
+(setv data
   ["2 10 10 100"]) ;; 4.95 10.20
 
 (defn map-int [x]
   (list (map int x)))
 
-(def +g+ 10.0) ;; 重力加速度
+(setv +g+ 10.0) ;; 重力加速度
 
 (defn calc [H T]
   (if (< T 0)

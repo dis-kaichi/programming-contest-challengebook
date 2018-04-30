@@ -8,13 +8,13 @@
 (require [hy.extra.anaphoric [ap-pipe ap-map-when]])
 (import pdb)
 
-(def data
+(setv data
   ["3 3"
    "..."
    ".x."
    "..."]) ;; 2
 
-(def +m+ 100000) ;;
+(setv +m+ 100000) ;;
 
 (defn map-int [xs] (list (map int xs)))
 

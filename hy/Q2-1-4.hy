@@ -5,7 +5,7 @@
 ;; ----------------------------------------
 (require [hy.contrib.loop [loop]])
 
-(def data
+(setv data
   ["10 10"
    "#S######.#"
    "......#..#"
@@ -19,7 +19,7 @@
    "....#...G#"
    ])
 
-(def +INF+ 100000000)
+(setv +INF+ 100000000)
 
 (defclass P []
   [x 0
@@ -42,14 +42,14 @@
     (except [e ValueError]
             None)))
 (defn find-start-and-goal []
-  (def start [])
-  (def goal [])
-  (def row 0)
+  (setv start [])
+  (setv goal [])
+  (setv row 0)
   (for [line +maze+]
-    (def ss (find-element line "S"))
+    (setv ss (find-element line "S"))
     (when (not (none? ss))
       (setv start [row ss]))
-    (def gg (find-element line "G"))
+    (setv gg (find-element line "G"))
     (when (not (none? gg))
       (setv goal [row gg]))
     (setv row (inc row))
@@ -57,38 +57,38 @@
   [start goal]
   )
 
-(def +TMP+ (list (map int (.split (nth data 0)))))
-(def +N+ (nth +TMP+ 0))
-(def +M+ (nth +TMP+ 1))
-(def +maze+ (list (map list (cut data 1))))
+(setv +TMP+ (list (map int (.split (nth data 0)))))
+(setv +N+ (nth +TMP+ 0))
+(setv +M+ (nth +TMP+ 1))
+(setv +maze+ (list (map list (cut data 1))))
 
-(def +d+ (create-matrix +N+ +M+))
+(setv +d+ (create-matrix +N+ +M+))
 
-(def +dx+ [1 0 -1 0])
-(def +dy+ [0 1 0 -1])
+(setv +dx+ [1 0 -1 0])
+(setv +dy+ [0 1 0 -1])
 
 
 (import [lib.queue [Queue]])
 (defn bfs []
   (setv que (Queue))
-  (def check-points (find-start-and-goal))
-  (def start (first check-points))
-  (def goal (second check-points))
-  (def sx (first start))
-  (def sy (second start))
-  (def gx (first goal))
-  (def gy (second goal))
+  (setv check-points (find-start-and-goal))
+  (setv start (first check-points))
+  (setv goal (second check-points))
+  (setv sx (first start))
+  (setv sy (second start))
+  (setv gx (first goal))
+  (setv gy (second goal))
   (.push que (P sx sy))
   (setm! +d+ sx sy 0)
   (loop []
     (when (not (.empty? que))
-      (def p (.pop que))
+      (setv p (.pop que))
       (if (and (= gx p.x)
                (= gy p.y))
         (nthm +d+ gx gy) ;; break
         (for [i (range 4)]
-          (def nx (+ p.x (nth +dx+ i)))
-          (def ny (+ p.y (nth +dy+ i)))
+          (setv nx (+ p.x (nth +dx+ i)))
+          (setv ny (+ p.y (nth +dy+ i)))
           (when (and (<= 0 nx)
                      (< nx +N+)
                      (<= 0 ny)
@@ -100,7 +100,7 @@
             (recur)))))))
 
 (defn solve []
-  (def res (bfs))
+  (setv res (bfs))
   (print res))
 
 (defmain

@@ -7,13 +7,13 @@
 (require [hy.contrib.loop [loop]])
 (require[hy.extra.anaphoric [ap-pipe]])
 
-(def data
+(setv data
   ["2 2 4"
    "0 1"
    "1 1"
    ])
 
-(def +m+ 10007)
+(setv +m+ 10007)
 
 (defn create-matrix [n m &optional [default 0]]
   (ap-pipe (* [default] (* n m))
@@ -72,9 +72,8 @@
       ;; Iを引く
       (when (= i j)
         (setv a (% (+ a +m+ -1) +m+)))
-      (apply print
-             [(.format "{0}{1}" a (if (= (inc j) n) "\n" " "))]
-             {:end ""}))))
+      (print #* [(.format "{0}{1}" a (if (= (inc j) n) "\n" " "))]
+             #** {"end" ""}))))
 
 (defmain
   [&rest args]

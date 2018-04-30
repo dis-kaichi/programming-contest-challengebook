@@ -6,7 +6,7 @@
 (require [hy.contrib.loop [loop]])
 (import [functools [partial]])
 
-(def data
+(setv data
   ["7 18"  ;; 辺数は無向グラフなので２倍にする
    "0 1 2" ;; from to cost
    "0 2 10"
@@ -18,7 +18,7 @@
    "3 5 1"
    "4 5 5"]) ;; cost 17
 
-(def data
+(setv data
   ["8 22"  ;; 辺数は無向グラフなので２倍にする
    "0 1 2" ;; from to cost
    "0 2 10"
@@ -74,9 +74,9 @@
 ;; ----------------------------------------
 ;; Union-Find木
 ;; ----------------------------------------
-(def +union-find-max+ 10000)
-(def *parent* (* [0] +union-find-max+))
-(def *rank* (* [0] +union-find-max+))
+(setv +union-find-max+ 10000)
+(setv *parent* (* [0] +union-find-max+))
+(setv *rank* (* [0] +union-find-max+))
 
 (defn init-union-find [n]
   (for [i (range n)]
@@ -107,7 +107,7 @@
 ;; End
 ;; ----------------------------------------
 
-(def (, +V+ +E+) (-> data first (.split " ") ((partial map int))))
+(setv (, +V+ +E+) (-> data first (.split " ") ((partial map int))))
 
 (defn str-data-to-list [raw-info-list]
   (loop [[info-list raw-info-list]
@@ -123,13 +123,13 @@
                (+ data [(Edge from to cost)
                         (Edge to from cost)]))))))
 
-(def *es* (-> data rest list str-data-to-list))
+(setv *es* (-> data rest list str-data-to-list))
 
 (defn kruskal []
   ;; 小さい順にソート
   (setv sorted-es (-> *es*
                       ((fn [lst]
-                         (apply sorted [lst] {"reverse" True})))))
+                         (sorted #* [lst] #** {"reverse" True})))))
   (init-union-find +V+)
   (loop [[i 0]
          [res 0]]

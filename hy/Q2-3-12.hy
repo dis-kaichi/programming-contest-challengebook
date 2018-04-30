@@ -6,22 +6,22 @@
 (require [hy.contrib.loop [loop]])
 (import [functools [partial]])
 
-(def data
+(setv data
   ["5"
    "4 2 3 1 5"]) ;; 2 3 5 (3)
 
-(def data
+(setv data
   ["8"
    "4 2 3 1 5 1 6 7"]) ;; 2 3 5 6 7 (5)
 
-(def +n+ (-> data (nth 0) int))
-(def +a+ (-> data
+(setv +n+ (-> data (nth 0) int))
+(setv +a+ (-> data
              (nth 1)
              (.split " ")
              ((partial map int))
              list)) ;; iterator -> list
 
-(def *dp* (* [0] +n+))
+(setv *dp* (* [0] +n+))
 
 (defn solve []
   (setv res 0)

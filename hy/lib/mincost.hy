@@ -6,7 +6,7 @@
 
 (import sys)
 (import [operations [safe-get push]])
-(def +inf+ (. sys maxsize))
+(setv +inf+ (. sys maxsize))
 
 (defclass Edge []
   [-to 0
@@ -39,8 +39,8 @@
     (.format "{0} {1} {2} {3}"
              (. self -to) (. self -cap) (. self -cost) (. self -rev))))
 
-(def G {})      ;; グラフの隣接リスト表現
-(def dist {})   ;; 最短距離
+(setv G {})      ;; グラフの隣接リスト表現
+(setv dist {})   ;; 最短距離
 
 ;; fromからtoへ向かう容量cap, コストの辺をグラフに追加する
 (defn add-edge [from to cap cost]
@@ -102,3 +102,6 @@
           (+= (. (get G v (. e rev)) cap) d)
           (setv v (get prevv v))))))
   res)
+
+(defn get-graph []
+  G)

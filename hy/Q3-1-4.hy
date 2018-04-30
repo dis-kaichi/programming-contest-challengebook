@@ -7,7 +7,7 @@
 (import [functools [partial]])
 (import [math [floor sqrt pow]])
 
-(def data
+(setv data
   ["3"
    "2"
    "2 2 5 3 2 1"])
@@ -22,8 +22,8 @@
     (floor c)
     (ceil c)))
 
-(def +max-n+ (int (pow 10 4)))
-(def +inf+ 100000000)
+(setv +max-n+ (int (pow 10 4)))
+(setv +inf+ 100000000)
 
 (defn C [x n k w v y]
   (for [i (range n)]
@@ -46,7 +46,7 @@
                     list
                     split-wv))
   ;; Main
-  (def y (* [0] n))
+  (setv y (* [0] n))
   (loop [[i 0]
          [lb 0]
          [ub +inf+]]

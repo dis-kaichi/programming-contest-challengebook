@@ -8,7 +8,7 @@
 (import [math [floor ceil]])
 (require [hy.extra.anaphoric [ap-pipe ap-map-when]])
 
-(def  data
+(setv  data
   ["2 4 2 1"
    "3 1"
    "0 0 3 2"
@@ -16,7 +16,7 @@
    "3 3 0 0"
    "2 5 0 0"]) ;; 3.667 (5 / 3 + 2 / 1)
 
-(def +inf+ 1000000)
+(setv +inf+ 1000000)
 
 (defn map-int [xs] (list (map int xs)))
 
@@ -49,7 +49,7 @@
 ;; dp[S][v]
 ;;  S : 残っている乗車券
 ;;  v : 現在位置vの状態に至るまでの最小のコスト
-(def dp {})
+(setv dp {})
 
 (defn safe-get [-dict -key &optional [default +inf+]]
   (try

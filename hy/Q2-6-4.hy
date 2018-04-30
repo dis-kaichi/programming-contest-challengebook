@@ -7,9 +7,9 @@
 (import [functools [partial]])
 (import [math [floor sqrt pow]])
 
-(def +max-n+ 1000000)
-(def *prime* (* [False] +max-n+))
-(def *is-prime* (* [False] (inc +max-n+)))
+(setv +max-n+ 1000000)
+(setv *prime* (* [False] +max-n+))
+(setv *is-prime* (* [False] (inc +max-n+)))
 
 (defn sieve [n]
   (setv p 0)

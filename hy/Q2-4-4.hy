@@ -8,16 +8,16 @@
 (import [heapq [heappush heappop]])
 
 
-(def data
+(setv data
   ["3"
    "8 5 8"]) ;; 34
 
-(def data
+(setv data
   ["4"
    "8 5 9 10"]) ;; 64
 
-(def +N+ (-> data (nth 0) int))
-(def +L+ (-> data
+(setv +N+ (-> data (nth 0) int))
+(setv +L+ (-> data
              (nth 1)
              (.split " ")
              ((partial map int))

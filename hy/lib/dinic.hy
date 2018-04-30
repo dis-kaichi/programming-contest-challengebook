@@ -7,7 +7,7 @@
 (require [hy.contrib.loop [loop]])
 (import [operations [safe-get]])
 
-(def +inf+ (. sys maxsize))
+(setv +inf+ (. sys maxsize))
 
 (defclass Edge []
   [-to 0
@@ -34,7 +34,7 @@
   (defn --str-- [self]
     (.format "{0} {1} {2}" (. self -to) (. self -cap) (. self -rev))))
 
-(def G {})      ;; グラフの隣接リスト表現
+(setv G {})      ;; グラフの隣接リスト表現
 
 (defn push [-list element]
   (.append -list element)

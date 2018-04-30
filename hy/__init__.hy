@@ -3,5 +3,5 @@
 (import os)
 (import sys)
 
-(def path (.join (. os path) (.abspath (. os path) --file--) "lib"))
+(setv path (.join (. os path) (.abspath (. os path) --file--) "lib"))
 (.append (. sys path) path)

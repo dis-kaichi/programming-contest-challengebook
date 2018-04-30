@@ -7,7 +7,7 @@
 (require [hy.contrib.loop [loop]])
 (require [hy.extra.anaphoric [ap-pipe]])
 
-(def data
+(setv data
   ["40 6"
    "20 30"
    "1 10"
@@ -17,18 +17,18 @@
    "30 40"
    ])
 
-(def +m+ 10007)
+(setv +m+ 10007)
 
 (import [sys])
 (import [math [floor]])
 
-(def +inf+ (. sys maxsize))
+(setv +inf+ (. sys maxsize))
 
-(def +max-n+ (<< 1 17))
+(setv +max-n+ (<< 1 17))
 
 ;; セグメント木を持つグローバル配列
-(def *n* 0)
-(def *dat* (* [0] (* 2 (dec +max-n+))))
+(setv *n* 0)
+(setv *dat* (* [0] (* 2 (dec +max-n+))))
 
 (defmacro *= [x value] `(setv ~x (* ~x ~value)))
 (defmacro += [x value] `(setv ~x (+ ~x ~value)))
@@ -82,7 +82,7 @@
     (.append list2 t))
   (, list1 list2))
 
-(def *dp* {}) ;; DPテーブル
+(setv *dp* {}) ;; DPテーブル
 
 (defn safe-get [-dict -key &optional [default -1]]
   (try

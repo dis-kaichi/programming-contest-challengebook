@@ -5,13 +5,13 @@
 ;; ----------------------------------------
 (require [hy.contrib.loop [loop]])
 
-(def data
+(setv data
   ["5"
    "1 2 4 6 8"
    "3 5 7 9 10"])
-(def +N+ (int (nth data 0)))
-(def +S+ (list (map int (.split (nth data 1)))))
-(def +T+ (list (map int (.split (nth data 2)))))
+(setv +N+ (int (nth data 0)))
+(setv +S+ (list (map int (.split (nth data 1)))))
+(setv +T+ (list (map int (.split (nth data 2)))))
 
 (defclass Pair []
   [f 0
@@ -20,13 +20,14 @@
     (setv self.f f)
     (setv self.s s)))
 
-(def ITV [])
+(setv ITV [])
 
 (defn solve []
   (for [i (range +N+)]
     (.append ITV (Pair (nth +T+ i) (nth +S+ i))))
   ;;(print (list (map (fn [p] p.f) ITV)))
-  (apply ITV.sort [] {"key" (fn [x] x.f)})
+  ;(apply ITV.sort [] {"key" (fn [x] x.f)})
+  (.sort ITV #* [] #** {"key" (fn [x] x.f)})
   ;;(print (list (map (fn [p] p.f) ITV)))
   (loop[[ans 0]
         [t 0]

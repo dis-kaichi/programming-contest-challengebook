@@ -6,9 +6,9 @@
 (require [hy.contrib.loop [loop]])
 (import [math [floor ceil]])
 
-(def +st-size+ (dec (<< 1 18)))
+(setv +st-size+ (dec (<< 1 18)))
 
-(def data
+(setv data
   ["7 3"
    "1 5 2 6 3 7 4"
    "2 5 3"

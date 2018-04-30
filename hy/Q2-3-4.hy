@@ -5,32 +5,33 @@
 ;; ----------------------------------------
 (require [hy.contrib.loop [loop]])
 
-(def data
+(setv data
   ["4 4"
    "abcd"
    "becd"]) ;; bcd
 
-(def data
+(setv data
   ["6 5"
    "aebcd"
    "abecd"]) ;; aecd
 
-(def (, +n+ +m+) (-> data
+(setv (, +n+ +m+) (-> data
                      (nth 0)
                      (.split " ")
                      ((fn [x] (map int x)))))
-(def +s+ (-> data (nth 1) list))
-(def +t+ (-> data (nth 2) list))
+(setv +s+ (-> data (nth 1) list))
+(setv +t+ (-> data (nth 2) list))
 
 (defn create-matrix [n m]
   (list (map list (partition (* [0] (* n m)) m))))
+
 (defn setm! [matrix  row col value]
-  (let [x (nth matrix row)]
-    (assoc x col value)))
+  (assoc (get matrix row) col value))
+
 (defn nthm [matrix row col]
   (nth (nth matrix row) col))
 
-(def *dp* (create-matrix (inc +n+) (inc +m+)))
+(setv *dp* (create-matrix (inc +n+) (inc +m+)))
 
 (defn solve []
   (for [i (range +n+)]

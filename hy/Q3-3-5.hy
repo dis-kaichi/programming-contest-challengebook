@@ -6,7 +6,7 @@
 (require [hy.contrib.loop [loop]])
 (import [math [floor]])
 
-(def data
+(setv data
   ["8 2"
    "5 3 7 9 6 4 1 2"
    "C 1 5 1" ;; 1-indexed L and R
@@ -47,7 +47,7 @@
     (+= b i v)
     (setv i (+ i (& i (- i))))))
 
-(def +max-n+ 1000)
+(setv +max-n+ 1000)
 
 (defn solve []
   ;; Parameters

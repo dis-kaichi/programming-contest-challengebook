@@ -5,9 +5,9 @@
 ;; ----------------------------------------
 (import [operations [safe-get]])
 
-(def G {})      ;; グラフの隣接リスト表現
-(def match {})  ;; マッチングのペア
-(def used {})   ;; DFSで既に調べたかのフラグ
+(setv G {})      ;; グラフの隣接リスト表現
+(setv match {})  ;; マッチングのペア
+(setv used {})   ;; DFSで既に調べたかのフラグ
 
 (defn push [-list element]
   (.append -list element)

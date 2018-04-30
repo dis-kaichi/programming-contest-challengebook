@@ -4,6 +4,8 @@
 ;; Operations
 ;; ----------------------------------------
 
+(import [decorators [curried]])
+
 ;; Functions
 (defn safe-get [dictionary key &optional [default -1]]
   (try
@@ -17,6 +19,10 @@
 (defn push [-list element]
   (.append -list element)
   -list)
+
+#@(curried
+    (defn cmap [f xs]
+      (map f xs)))
 
 
 ;; Macros
