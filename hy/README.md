@@ -84,9 +84,9 @@
 | Evacuation Plan (POJ No.2175)               | Q3-5-13.hy<br>Q3-5-14.hy        | 216-218 |
 | The Windy's (POJ No.3688)                   | Q3-5-15.hy                      | 220     |
 | Intervals (POJ No.3680)                     | Q3-5-16.hy                      | 222     |
-| Jack Straws (POJ 1127) | | |
-| White Birds (AOJ 2308) | | |
-| Coneology (POJ 2932) | | |
+| Jack Straws (POJ 1127)                      | Q3-6-1.hy                       | 226-227 |
+| White Birds (AOJ 2308)                      | Q3-6-2.hy                       | 230-231 |
+| Coneology (POJ 2932)                        | Q3-6-3.hy                       | 232-233 |
 | Beauty Contest (POJ 2187) | | |
 | Intersection of Two Prisms (AOJ 1313) | | |
 | Numbers (2008 Round 1A C) | | |

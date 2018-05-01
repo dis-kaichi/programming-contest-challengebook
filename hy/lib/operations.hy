@@ -6,6 +6,8 @@
 
 (import [decorators [curried]])
 
+;; Constants
+
 ;; Classes
 (defclass LoopEnd [RuntimeError])
 
