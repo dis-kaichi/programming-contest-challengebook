@@ -81,9 +81,9 @@
 | Dining (POJ No.3281)                        | Q3-5-10.hy                      | 211-212 |
 | Dual Core CPU (POJ No.3469)                 | Q3-5-11.hy                      | 214     |
 | Farm Tour (POJ No.2135)                     | Q3-5-12.hy                      | 215     |
-| Evacuation Plan (POJ No.2175)               | Q3-5-13.hy                      | 216-218 |
-| The Windy's (POJ No.3688) | | |
-| Intervals (POJ No.3680) | | |
+| Evacuation Plan (POJ No.2175)               | Q3-5-13.hy<br>Q3-5-14.hy        | 216-218 |
+| The Windy's (POJ No.3688)                   | Q3-5-15.hy                      | 220     |
+| Intervals (POJ No.3680)                     | Q3-5-16.hy                      | 222     |
 | Jack Straws (POJ 1127) | | |
 | White Birds (AOJ 2308) | | |
 | Coneology (POJ 2932) | | |

@@ -5,7 +5,7 @@
 ;; ----------------------------------------
 
 (require [hy.contrib.loop [loop]])
-(require[hy.extra.anaphoric [ap-pipe]])
+(import [lib.matrix [create-matrix]])
 
 (setv data
   ["2 2 4"
@@ -14,12 +14,6 @@
    ])
 
 (setv +m+ 10007)
-
-(defn create-matrix [n m &optional [default 0]]
-  (ap-pipe (* [default] (* n m))
-           (partition it m)
-           (map list it)
-           (list it)))
 
 ;; A * B
 (defn mul [A B]

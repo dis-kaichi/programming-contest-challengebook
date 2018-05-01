@@ -6,6 +6,10 @@
 
 (import [decorators [curried]])
 
+;; Classes
+(defclass LoopEnd [RuntimeError])
+
+
 ;; Functions
 (defn safe-get [dictionary key &optional [default -1]]
   (try
@@ -19,6 +23,9 @@
 (defn push [-list element]
   (.append -list element)
   -list)
+
+(defn unique [xs]
+  (list (set xs)))
 
 #@(curried
     (defn cmap [f xs]

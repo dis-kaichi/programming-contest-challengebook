@@ -3,6 +3,7 @@
 ;; ----------------------------------------
 ;; Utility for matrix
 ;; ----------------------------------------
+(require[hy.extra.anaphoric [ap-pipe]])
 
 ;; Functions
 
@@ -18,7 +19,15 @@
 ;; (transpose [[1 2] [3 4]])
 ;;  => [[1 3] [2 4]]
 (defn transpose [matrix]
-  (list (map list (apply zip matrix))))
+  (list (map list (zip #* matrix))))
+
+(defn create-matrix [n m &optional [default 0]]
+  (ap-pipe (* [default] (* n m))
+           (partition it m)
+           (map list it)
+           (list it)))
+
+
 
 ;; Macros
 

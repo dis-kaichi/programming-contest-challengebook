@@ -6,6 +6,9 @@
 (require [hy.contrib.loop [loop]])
 
 ;; 二分探索
+;;  xs      : list
+;;  x       : element
+;;  return  : True/False (Founded/Not)
 (defn binary-search [xs x]
   (loop [[l 0]
          [r (len xs)]]
