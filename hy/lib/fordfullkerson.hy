@@ -73,3 +73,8 @@
     (if (zero? f)
       flow
       (recur (+ f flow)))))
+
+;; グラフのクリア
+(defn clear-graph []
+  (setv G {}))
+

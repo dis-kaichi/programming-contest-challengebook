@@ -95,3 +95,7 @@
             (break)))
         (recur new-flow)))))
 
+;; グラフのクリア
+(defn clear-graph []
+  (setv G {}))
+

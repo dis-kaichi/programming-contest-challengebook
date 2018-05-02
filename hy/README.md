@@ -89,12 +89,12 @@
 | Coneology (POJ 2932)                        | Q3-6-3.hy                       | 232-233 |
 | Beauty Contest (POJ 2187)                   | Q3-6-4.hy<br>Q3-6-5.hy          | 234-236 |
 | Intersection of Two Prisms (AOJ 1313)       | Q3-6-6.hy                       | 237-238 |
-| Numbers (2008 Round 1A C) | | |
-| No Cheating (2008 Round 3 C) | | |
-| Stock Charts (2009 Round 2 C) | | |
-| Watering Plants (2009 Round 2 D) | | |
-| Number Sets (2008 Round 3 C) | | |
-| Wi-fi Towers (2009 World Final D) | | |
+| Numbers (2008 Round 1A C)                   | Q3-7-1.hy                       | 240     |
+| No Cheating (2008 Round 3 C)                | Q3-7-2.hy                       | 241-242 |
+| Stock Charts (2009 Round 2 C)               | Q3-7-3.hy                       | 244     |
+| Watering Plants (2009 Round 2 D)            | Q3-7-4.hy                       | 246-247 |
+| Number Sets (2008 Round 3 C)                | Q3-7-5.hy                       | 249     |
+| Wi-fi Towers (2009 World Final D)           | Q3-7-6.hy                       | 251-252 |
 | ランダムウォーク | | |
 | 包除原理 | | |
 | 周期的でない文字列の数え上げ | | |

@@ -6,8 +6,9 @@
 (require [hy.contrib.loop [loop]])
 (import [functools [partial]])
 (import [heapq [heappush heappop]])
+(import [lib.unionfind [init-union-find same unite]])
 
-(def data
+(setv data
   ["5 5 8"    ;; N, M, R
    "4 3 6831" ;; x, y, d
    "1 3 4583"
@@ -57,61 +58,25 @@
 (defn append-list [lst1 lst2]
   (+ lst1 [lst2]))
 
-;; ----------------------------------------
-;; Union-Find木
-;; ----------------------------------------
-(def +union-find-max+ 10000)
-(def *parent* (* [0] +union-find-max+))
-(def *rank* (* [0] +union-find-max+))
-
-(defn init-union-find [n]
-  (for [i (range n)]
-    (assoc *parent* i i)
-    (assoc *rank* i 0)))
-
-(defn find [x]
-  (if (= (nth *parent* x) x)
-    x
-    (do
-      (assoc *parent* x (find (nth *parent* x)))
-      (nth *parent* x))))
-
-(defn unite [x y]
-  (setv x (find x))
-  (setv y (find y))
-  (when (not (= x y))
-    (if (< (nth *rank* x) (nth *rank* y))
-      (assoc *parent* x y)
-      (do
-        (assoc *parent* y x)
-        (when (= (nth *rank* x) (nth *rank* y))
-          (assoc *rank* x (inc (nth *rank* x))))))))
-
-(defn same [x y]
-  (= (find x) (find y)))
-;; ----------------------------------------
-;; End
-;; ----------------------------------------
-
-(def (, +N+ +M+ +R+)
+(setv (, +N+ +M+ +R+)
   (-> data
       first
       (.split " ")
       ((partial map int))))
 
-(def *x* (* [0] +R+))
-(def *y* (* [0] +R+))
-(def *d* (* [0] +R+))
+(setv *x* (* [0] +R+))
+(setv *y* (* [0] +R+))
+(setv *d* (* [0] +R+))
 
-(def *es* [])
+(setv *es* [])
 
-(def (, +V+ +E+) [(+ +N+ +M+) +R+])
+(setv (, +V+ +E+) [(+ +N+ +M+) +R+])
 
 (defn kruskal []
   ;; 小さい順にソート
   (setv sorted-es (-> *es*
                       ((fn [lst]
-                         (apply sorted [lst] {"reverse" True})))))
+                         (sorted #* [lst] #** {"reverse" True})))))
   (init-union-find +V+)
   (loop [[i 0]
          [res 0]]

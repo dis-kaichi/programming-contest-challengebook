@@ -4,6 +4,10 @@
 ;; Utility for matrix
 ;; ----------------------------------------
 (require[hy.extra.anaphoric [ap-pipe]])
+(import sys)
+
+;; Constants
+(setv *mod* (. sys maxsize))
 
 ;; Functions
 
@@ -26,6 +30,36 @@
            (partition it m)
            (map list it)
            (list it)))
+
+;; 環境変数変更
+(defn set-mod [n]
+  (global *mod*)
+  (setv *mod* n))
+
+;; A^n : 繰り返し２乗法
+(defn mod-pow [A n]
+  (setv order (len A))
+  (setv B (create-matrix order order 0))
+  (for [i (range order)]
+    (assoc (get B i) i 1))
+    ;(setm! B i i 1))
+  (while (> n 0)
+    (when (& n 1)
+      (setv B (mul B A)))
+    (setv A (mul A A))
+    (setv n (>> n 1)))
+  B)
+
+;; A * B
+(defn mul [A B]
+  (setv C (create-matrix (len A) (len (nth B 0)) 0))
+  (for [i (range (len A))]
+    (for [k (range (len B))]
+      (for [j (range (len (nth B 0)))]
+        (assoc (get C i) j (% (+ (get C i j)
+                                 (* (get A i k) (get B k j)))
+                        *mod*)))))
+  C)
 
 
 
