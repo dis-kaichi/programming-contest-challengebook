@@ -5,13 +5,9 @@
 ;; ----------------------------------------
 
 (require [hy.contrib.loop [loop]])
-(import [math [sqrt]])
 (import [lib.operations [LoopEnd unique]])
-(import [lib.matrix [transpose create-matrix]])
-(import [lib.point [Point on-segment? intersection]])
-
-(setv +g+ 9.8) ;; 重力加速度
-(setv +eps+ (** 10 -10))
+(import [lib.matrix [transpose]])
+(import [lib.point [Point]])
 
 (defn parameter1 []
   ;; Answer : 2

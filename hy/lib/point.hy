@@ -26,12 +26,38 @@
            (* (. self y) value)))
 
   (defn --eq-- [self other]
-    (and (= (. self x) (. other x))
-         (= (. self y) (. other y))))
+    (if (isinstance other Point)
+      (and (= (. self x) (. other x))
+           (= (. self y) (. other y)))
+      False))
 
   (defn --hash-- [self]
     (hash (, (. self x) (. self y))))
 
+  (defn --str-- [self]
+    (.format "({0}, {1})" (. self x) (. self y)))
+
+  (defn --lt-- [self other]
+    (if (!= (. self x) (. other x))
+      (< (. self x) (. other x))
+      (< (. self y) (. other y))))
+
+  (defn --le-- [self other]
+    (if (!= (. self x) (. other x))
+      (<= (. self x) (. other x))
+      (<= (. self y) (. other y))))
+
+  (defn --gt-- [self other]
+    (if (!= (. self x) (. other x))
+      (> (. self x) (. other x))
+      (> (. self y) (. other y))))
+
+  (defn --ge-- [self other]
+    (if (!= (. self x) (. other x))
+      (>= (. self x) (. other x))
+      (>= (. self y) (. other y))))
+
+  ;; Methods
   ;; 内積
   (defn dot [self other]
     (double-add (* (. self x) (. other x))
@@ -41,9 +67,6 @@
   (defn det [self other]
     (double-add (* (. self x) (. other y))
                 (- (* (. self y) (. other x)))))
-
-  (defn --str-- [self]
-    (.format "({0}, {1})" (. self x) (. self y)))
   )
 
 ;; Functions

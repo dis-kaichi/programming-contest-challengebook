@@ -87,8 +87,8 @@
 | Jack Straws (POJ 1127)                      | Q3-6-1.hy                       | 226-227 |
 | White Birds (AOJ 2308)                      | Q3-6-2.hy                       | 230-231 |
 | Coneology (POJ 2932)                        | Q3-6-3.hy                       | 232-233 |
-| Beauty Contest (POJ 2187) | | |
-| Intersection of Two Prisms (AOJ 1313) | | |
+| Beauty Contest (POJ 2187)                   | Q3-6-4.hy<br>Q3-6-5.hy          | 234-236 |
+| Intersection of Two Prisms (AOJ 1313)       | Q3-6-6.hy                       | 237-238 |
 | Numbers (2008 Round 1A C) | | |
 | No Cheating (2008 Round 3 C) | | |
 | Stock Charts (2009 Round 2 C) | | |
