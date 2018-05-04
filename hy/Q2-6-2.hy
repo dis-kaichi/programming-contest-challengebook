@@ -3,27 +3,20 @@
 ;; ----------------------------------------
 ;; 双六
 ;; ----------------------------------------
-(require [hy.contrib.loop [loop]])
 (import [functools [partial]])
-(import [math [floor]])
+(import [lib.algebra [extgcd]])
+(import [lib.operations [cmap]])
 
-(setv data
-  ["4 11" ;; a b
-   ])
-
-(defn extgcd [a b]
-  ;; ax + by = d となる [x y d] を返す
-  (if (zero? b)
-    [1 0 a]
-    (do
-      (setv prev (extgcd b (% a b)))
-      [(second prev)
-       (- (first prev) (* (second prev) (floor (/ a b))))
-       a])))
+(defn parameter1 []
+  ;; Answer : 3 0 0 1
+  (setv (, a b) (, 4 11))
+  (, a b))
 
 (defn solve []
-  ;; 入力値
-  (setv (, a b) (-> data first (.split " ") ((partial map int))))
+  ;; Parameters
+  (setv (, a b) (parameter1))
+
+  ;; Main
   (setv (, x y d) (extgcd a b))
   (setv result (* [0] 4))
   (if (pos? x)
@@ -32,7 +25,7 @@
   (if (pos? y)
     (assoc result 2 y)
     (assoc result 3 (- y)))
-  (print (-> result ((partial map str)) (->> (.join " ")))))
+  (print (-> result ((cmap str)) (->> (.join " ")))))
 
 (defmain
   [&rest args]

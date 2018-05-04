@@ -7,6 +7,7 @@
 (import sys)
 
 ;; Constants
+(setv +eps+ (** 10 -8))
 (setv *mod* (. sys maxsize))
 
 ;; Functions
@@ -61,7 +62,43 @@
                         *mod*)))))
   C)
 
+;; Gauss-Jordanの消去法
+;;    Ax = bを解く、Aは正方行列
+;;    解がないか一意で無い場合は長さ0の配列を返す
+(defn gauss-jordan [A b]
+  (setv n (len A))
+  (setv B (create-matrix n (inc n)))
+  (for [i (range n)]
+    (for [j (range n)]
+      (assoc (get B i) j (get A i j))))
+  ;; 行列Aの後ろにbを並べて同時に処理する
+  (for [i (range n)]
+    (assoc (get B i) n (get b i)))
 
+  (for [i (range n)]
+    ;; 注目している変数の係数の絶対値が大きい式を1番目に持ってくる
+    (setv pivot i)
+    (for [j (range i n)]
+      (when (> (abs (get B j i)) (abs (get B pivot i)))
+        (setv pivot j)))
+    ;; Swap
+    (setv tmp (get B i))
+    (assoc B i (get B pivot))
+    (assoc B pivot tmp)
+
+    ;; 解がないか、一意でない
+    (for [j (range (inc i) (inc n))]
+      (assoc (get B i) j (/ (get B i j) (get B i i))))
+    (for [j (range n)]
+      (when (!= i j)
+        ;; j番目の式からi番目の変数を消去
+        (for [k (range (inc i) (inc n))]
+          (assoc (get B j) k (- (get B j k) (* (get B j i) (get B i k))))))))
+  ;; 後ろに並べたbが解になる
+  (setv x [])
+  (for [i (range n)]
+    (.append x (get B i n)))
+  x)
 
 ;; Macros
 

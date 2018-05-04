@@ -3,8 +3,8 @@
 ;; ----------------------------------------
 ;; 線分上の格子点の個数
 ;; ----------------------------------------
-(require [hy.contrib.loop [loop]])
 (import [functools [partial]])
+(import [lib.algebra [gcd]])
 
 (setv data
   ["1 11" ;; P1
@@ -29,13 +29,6 @@
 
 (defn of-point [xs]
   (Point #* xs))
-
-(defn gcd [x y]
-  (loop [[a x]
-         [b y]]
-    (if (= b 0)
-      a
-      (recur b (% a b)))))
 
 (defn solve []
   (setv p1 (-> data
