@@ -86,6 +86,68 @@
             (, 0 -1) ;; 解が無い
             )))
 
+;; 冪乗計算
+;(defn mod-pow [x n md]
+;  (loop [[cn n]
+;         [cx x]
+;         [res 1]]
+;    (if (<= cn 0)
+;      res
+;      (do
+;        (when (= (& cn 1) 1)
+;          (setv res (% (* res cx) md)))
+;        (recur (>> cn 1) (% (pow cx 2) md) res)))))
+(defn mod-pow [x n md]
+  (setv res 1)
+  (while (pos? n)
+    (when (& n 1)
+      (setv res (% (* res x) md))) ;; 最下位bitが立っている時にx^(2^i)を掛ける
+    (setv x (% (** x 2) md)) ;; xを順次二乗していく
+    (>>= n 1))
+  res)
+
+;; 冪乗計算(Ver2)
+(defn mod-pow-v2 [x n md]
+  (if (zero? n)
+    1
+    (do
+      (setv res (mod-pow-v2 (% (pow x 2) md) (// n 2) md))
+      (when (= (& n 1) 1)
+        (setv res (% (* res x) md)))
+      res)))
+
+(defn prime-factor [n]
+  (setv res {})
+  (setv i 2)
+  (while (<= (** i 2) n)
+    (while (zero? (% n i))
+      (assoc res i (inc (safe-get res i 0)))
+      (//= n i))
+    (+= i 1))
+  (when (!= n 1)
+    (assoc res n 1))
+  res)
+
+(defn prime? [n]
+  (loop [[i 2]]
+    (if (> (** i 2) n)
+      (!= (% n i) 1)
+      (if (zero? (% n i))
+        False
+        (recur (inc i))))))
+
+(defn divisor [n]
+  (loop [[i 1]
+         [res []]]
+    (if (> (pow i 2) n)
+      res
+      (if (zero? (% n i))
+        (if (!= i (// n i))
+          (recur (inc i) (+ res [i (// n i)]))
+          (recur (inc i) (+ res [i])))
+        (recur (inc i) res)))))
+
+
 ;;; nの階乗
 ;(setv *fact* {})
 ;(defn init-mod-fact [n]

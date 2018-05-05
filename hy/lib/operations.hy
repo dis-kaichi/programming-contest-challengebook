@@ -22,9 +22,9 @@
 (defn conj [coll x]
   (+ coll [x]))
 
-(defn push [-list element]
-  (.append -list element)
-  -list)
+(defn push [lst element]
+  (.append lst element)
+  lst)
 
 (defn unique [xs]
   (list (set xs)))

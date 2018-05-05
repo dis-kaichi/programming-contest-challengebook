@@ -46,13 +46,13 @@
     ;(setm! B i i 1))
   (while (> n 0)
     (when (& n 1)
-      (setv B (mul B A)))
-    (setv A (mul A A))
+      (setv B (mul-pow B A)))
+    (setv A (mul-pow A A))
     (setv n (>> n 1)))
   B)
 
 ;; A * B
-(defn mul [A B]
+(defn mul-pow [A B]
   (setv C (create-matrix (len A) (len (nth B 0)) 0))
   (for [i (range (len A))]
     (for [k (range (len B))]

@@ -3,15 +3,11 @@
 ;; ----------------------------------------
 ;; 二部マッチング
 ;; ----------------------------------------
-(import [operations [safe-get]])
+(import [operations [safe-get push]])
 
 (setv G {})      ;; グラフの隣接リスト表現
 (setv match {})  ;; マッチングのペア
 (setv used {})   ;; DFSで既に調べたかのフラグ
-
-(defn push [-list element]
-  (.append -list element)
-  -list)
 
 ;; uとvを結ぶ辺をグラフに追加する
 (defn add-edge [u v]

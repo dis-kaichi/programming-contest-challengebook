@@ -95,18 +95,18 @@
 | Watering Plants (2009 Round 2 D)            | Q3-7-4.hy                       | 246-247 |
 | Number Sets (2008 Round 3 C)                | Q3-7-5.hy                       | 249     |
 | Wi-fi Towers (2009 World Final D)           | Q3-7-6.hy                       | 251-252 |
-| ランダムウォーク                            | Q4-1-1-.hy                      | 259-260 |
-| 包除原理 | | |
-| 周期的でない文字列の数え上げ | | |
-| 石の塗り方の数え上げ | | |
-| コインのゲーム１ | | |
-| A Funny Game (POJ 2484) | | |
-| Euclid's Game (POJ 2348) | | |
-| Nim | | |
-| Georgia and Bob (POJ 1704) | | |
-| コインのゲーム２ | | |
-| Cutting Game (POJ 2311) | | |
-| Popular Cows (POJ No.2186) | | |
+| ランダムウォーク                            | Q4-1-1.hy                       | 259-260 |
+| 包除原理                                    | Q4-1-2.hy                       | 265     |
+| 周期的でない文字列の数え上げ                | Q4-1-3.hy                       | 267-268 |
+| 石の塗り方の数え上げ                        | Q4-1-4.hy                       | 271     |
+| コインのゲーム１                            | Q4-2-1.hy                       | 273     |
+| A Funny Game (POJ 2484)                     | Q4-2-2.hy                       | 275     |
+| Euclid's Game (POJ 2348)                    | Q4-2-3.hy                       | 277     |
+| Nim                                         | Q4-2-4.hy                       | 278     |
+| Georgia and Bob (POJ 1704)                  | Q4-2-5.hy                       | 280-281 |
+| コインのゲーム２                            | Q4-2-6.hy                       | 282-283 |
+| Cutting Game (POJ 2311)                     | Q4-2-7.hy                       | 284     |
+| Popular Cows (POJ No.2186)                  | Q4-3-1.hy                       | 288     |
 | Priest John's Busiest Day (POJ No.3683) | | |
 | Housewife Wind (POJ No.2763) | | |
 | Largest Rectangle in a Histogram (POJ No.2559) | | |
