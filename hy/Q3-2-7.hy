@@ -5,7 +5,7 @@
 ;; ----------------------------------------
 (require [hy.contrib.loop [loop]])
 (import [functools [partial]])
-(import [math [floor sqrt pow]])
+(import [lib.search [lower-bound]])
 
 (setv data
   ["6"
@@ -19,23 +19,6 @@
 
 (defmacro += [variable value]
   `(setv ~variable (+ ~variable ~value)))
-
-(defn truncate-div [n d]
-  (setv c (/ n d))
-  (if (> c 0)
-    (floor c)
-    (ceil c)))
-
-(defn lower-bound [xs value]
-  (loop [[lb 0]
-         [ub (len xs)]]
-    (if (<= (- ub lb) 1)
-      ub
-      (do
-        (setv mid (truncate-div (+ lb ub) 2))
-        (if (>= (nth xs mid) value)
-          (recur lb mid)
-          (recur mid ub))))))
 
 (defn solve []
   ;; Parameters

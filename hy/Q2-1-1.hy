@@ -49,21 +49,22 @@
                  (get +memo2+ (- n 2))))))))
 
 ;; 4. スタック
-(defn push [_stack x]
-  (.append _stack x))
-(defn pop [_stack]
-  (try
-    (.pop _stack)
-    (except [e Exception]
-            None)))
+;(defn push [_stack x]
+;  (.append _stack x))
+;(defn pop [_stack]
+;  (try
+;    (.pop _stack)
+;    (except [e Exception]
+;            None)))
+(import [lib.stack [Stack]])
 (defn stack-test []
-  (setv stack [])
-  (push stack 1)
-  (push stack 2)
-  (push stack 3)
-  (print "\t" (pop stack))
-  (print "\t" (pop stack))
-  (print "\t" (pop stack))
+  (setv stack (Stack))
+  (.push stack 1)
+  (.push stack 2)
+  (.push stack 3)
+  (print "\t" (.pop stack))
+  (print "\t" (.pop stack))
+  (print "\t" (.pop stack))
   )
 
 ;; 5. キュー

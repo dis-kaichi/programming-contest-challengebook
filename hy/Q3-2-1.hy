@@ -4,44 +4,28 @@
 ;; Subsequence
 ;; ----------------------------------------
 (require [hy.contrib.loop [loop]])
-(import [functools [partial]])
-(import [math [floor sqrt pow]])
+(import [lib.search [lower-bound]])
 
-(setv data
-  ["10"
-   "15"
-   "5 1 4 5 10 7 4 9 2 8"]) ;; 2
+(defn parameter1 []
+  ;; Answer : 2
+  (setv n 10)
+  (setv S 15)
+  (setv a [5 1 4 5 10 7 4 9 2 8])
+  (, n S a))
 
-(setv data
-  ["5"
-   "11"
-   "1 2 3 4 5"]) ;; 3
+(defn parameter2 []
+  ;; Answer : 3
+  (setv n 5)
+  (setv S 11)
+  (setv a [1 2 3 4 5])
+  (, n S a))
 
-(setv *sum* (* [0] (int (pow 10 5))))
-
-(defn truncate-div [n d]
-  (setv c (/ n d))
-  (if (> c 0)
-    (floor c)
-    (ceil c)))
-
-(defn lower-bound [lower upper value]
-  ;; 3-1 lower_boundのsolveを関数化したもの
-  (loop [[lb lower]
-         [ub upper]]
-    (if (<= (- ub lb) 1)
-      ub
-      (do
-        (setv mid (truncate-div (+ lb ub) 2))
-        (if (>= (nth *sum* mid) value)
-          (recur lb mid)
-          (recur mid ub))))))
+(setv *sum* (* [0] (int (** 10 5))))
 
 (defn solve []
   ;; Parameters
-  (setv n (-> data first int))
-  (setv S (-> data second int))
-  (setv a (-> data (nth 2) (.split " ") ((partial map int)) list))
+  (setv (, n S a) (parameter1))
+
   ;; Main
   (for [i (range n)]
     (assoc *sum* (inc i) (+ (nth *sum* i) (nth a i))))
@@ -53,7 +37,7 @@
         (if (> (+ (nth *sum* s) S) (nth *sum* n))
           (print res)
           (do
-            (setv t (lower-bound s n (+ (nth *sum* s) S)))
+            (setv t (lower-bound *sum* (+ (nth *sum* s) S) s n))
             (recur (inc s) (min res (- t s)))))))))
 
 (defmain

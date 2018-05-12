@@ -4,7 +4,7 @@
 ;; K-th Number
 ;; ----------------------------------------
 (require [hy.contrib.loop [loop]])
-(import [math [floor ceil]])
+(import [lib.search [upper-bound]])
 
 (setv data
   ["7 3"
@@ -46,23 +46,6 @@
       (do
         (.append res [])
         (recur (inc i) res)))))
-
-(defn truncate-div [n d]
-  (setv c (/ n d))
-  (if (> c 0)
-    (floor c)
-    (ceil c)))
-
-(defn upper-bound [xs lower upper value]
-  (loop [[lb lower ]
-         [ub upper]]
-    (if (<= (- ub lb) 1)
-      ub
-      (do
-        (setv mid (truncate-div (+ lb ub) 2))
-        (if (> (nth xs mid) value)
-          (recur lb mid)
-          (recur mid ub))))))
 
 (defn solve []
   ;; Parameters
@@ -108,7 +91,7 @@
       (while (< tl tr)
         (setv b (div-int tl +B+))
         (setv current-bucket (nth bucket b))
-        (setv index (upper-bound current-bucket 0 (len current-bucket) x))
+        (setv index (upper-bound current-bucket x))
         ;(setv c (+ c (nth current-bucket index)))
         (setv c (+ c index))
         (setv tl (+ tl +B+)))

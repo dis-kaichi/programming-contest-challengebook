@@ -21,3 +21,39 @@
           (if (< (nth xs i) x)
             (recur (inc i) r)
             (recur l i)))))))
+
+;; lower-bound, upper-bound
+;;  http://www.pandanoir.info/entry/2015/12/26/190000
+(defn lower-bound [xs value &optional [lower 0] [upper -1]]
+  (when (empty? xs)
+    (return 0))
+
+  (when (= -1 upper)
+    (setv upper (len xs)))
+
+  (setv mid 0)
+  (while (> (- upper lower) 1)
+    (setv mid (// (+ lower upper) 2))
+    (if (< (get xs mid) value)
+      (setv lower mid)
+      (setv upper mid)))
+  (if (< (get xs lower) value)
+    upper
+    lower))
+
+(defn upper-bound [xs value &optional [lower 0] [upper -1]]
+  (when (empty? xs)
+    (return 0))
+
+  (when (= -1 upper)
+    (setv upper (len xs)))
+
+  (setv mid 0)
+  (while (> (- upper lower) 1)
+    (setv mid (// (+ lower upper) 2))
+    (if (<= (get xs mid) value)
+      (setv lower mid)
+      (setv upper mid)))
+  (if (<= (get xs lower) value)
+    upper
+    lower))

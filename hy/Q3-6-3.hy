@@ -8,6 +8,7 @@
 (import [lib.operations [LoopEnd unique]])
 (import [lib.matrix [transpose]])
 (import [lib.point [Point]])
+(import [lib.search [lower-bound]])
 
 (defn parameter1 []
   ;; Answer : 2
@@ -28,19 +29,19 @@
   (<= (+ (* dx dx) (* dy dy))
       (* (get r i) (get r j))))
 
-(defn lower-bound [xs value &optional [lower 0] [upper -1]]
-  (when (= -1 upper)
-    (setv upper (len xs)))
-
-  (loop [[lb lower]
-         [ub upper]]
-    (if (<= (- ub lb) 1)
-      ub
-      (do
-        (setv mid (truncate-div (+ lb ub) 2))
-        (if (>= (nth xs mid) value)
-          (recur lb mid)
-          (recur mid ub))))))
+;(defn lower-bound [xs value &optional [lower 0] [upper -1]]
+;  (when (= -1 upper)
+;    (setv upper (len xs)))
+;
+;  (loop [[lb lower]
+;         [ub upper]]
+;    (if (<= (- ub lb) 1)
+;      ub
+;      (do
+;        (setv mid (truncate-div (+ lb ub) 2))
+;        (if (>= (nth xs mid) value)
+;          (recur lb mid)
+;          (recur mid ub))))))
 
 (defn solve []
   ;; Parameters

@@ -5,7 +5,7 @@
 ;; ----------------------------------------
 (require [hy.contrib.loop [loop]])
 (import [functools [partial]])
-(import [math [floor sqrt pow]])
+(import [lib.search [lower-bound]])
 
 (setv data
   ["4"
@@ -16,26 +16,6 @@
 (defn map-int [x]
   (list (map int x)))
 
-(defmacro += [variable value]
-  `(setv ~variable (+ ~variable ~value)))
-
-(defn truncate-div [n d]
-  (setv c (/ n d))
-  (if (> c 0)
-    (floor c)
-    (ceil c)))
-
-(defn lower-bound [xs lower upper value]
-  (loop [[lb lower ]
-         [ub upper]]
-    (if (<= (- ub lb) 1)
-      ub
-      (do
-        (setv mid (truncate-div (+ lb ub) 2))
-        (if (>= (nth xs mid) value)
-          (recur lb mid)
-          (recur mid ub))))))
-
 (defn solve []
   ;; Parameters
   (setv n (-> data first int))
@@ -44,7 +24,7 @@
   (setv W (-> data (nth 3) int))
   ;; Main
   (setv ps [])
-  (setv n2 (floor (/ n 2)))
+  (setv n2 (// n 2))
   (for [i (range (<< 1 n2))]
     (setv (, sw sv) [0 0])
     (for [j (range n2)]
@@ -75,9 +55,12 @@
             (+= sv (nth v (+ n2 j)))))
         (if (<= sw W)
           (do
-            (setv index (-> first-pss (lower-bound 0 m (- W sw)) dec))
-            (setv tv (-> ps (nth index) second))
-            (recur (inc i) (max res (+ sv tv))))
+            (setv index (-> first-pss (lower-bound (- W sw) 0 m) dec))
+            (if (neg? index)
+              (recur (inc i) res)
+              (do
+                (setv tv (-> ps (nth index) second))
+                (recur (inc i) (max res (+ sv tv))))))
           (recur (inc i) res))))))
 
 (defmain

@@ -4,7 +4,7 @@
 ;; K-th Number 2
 ;; ----------------------------------------
 (require [hy.contrib.loop [loop]])
-(import [math [floor ceil]])
+(import [lib.search [upper-bound]])
 
 (setv +st-size+ (dec (<< 1 18)))
 
@@ -47,23 +47,6 @@
 (defn append-nth [lst i x]
   (assoc lst i (conj (nth lst i) x)))
 
-(defn truncate-div [n d]
-  (setv c (/ n d))
-  (if (> c 0)
-    (floor c)
-    (ceil c)))
-
-(defn upper-bound [xs lower upper value]
-  (loop [[lb lower ]
-         [ub upper]]
-    (if (<= (- ub lb) 1)
-      ub
-      (do
-        (setv mid (truncate-div (+ lb ub) 2))
-        (if (> (nth xs mid) value)
-          (recur lb mid)
-          (recur mid ub))))))
-
 (defn init [dat A k l r]
   (if (= 1 (- r l))
     (append-nth dat k (nth A l))
@@ -81,7 +64,7 @@
   (if (or (<= j l) (<= r i))
     0
     (if (and (<= i l) (<= r j))
-      (upper-bound (nth dat k) 0 (len (nth dat k)) x)
+      (upper-bound (nth dat k) x)
       (do
         (setv lc (query dat i j x (+ 1 (double k)) l (half-int (+ l r))))
         (setv rc (query dat i j x (+ 2 (double k)) (half-int (+ l r)) r))
