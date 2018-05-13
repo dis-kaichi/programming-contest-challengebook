@@ -49,3 +49,5 @@
           (setv vr (query a b (+ (* k 2) 2) (// (+ l r) 2) r))
           (min vl vr))))))
 
+(defn dump-dat []
+  (print *dat*))

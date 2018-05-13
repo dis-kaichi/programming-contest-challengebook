@@ -4,9 +4,6 @@
 ;; 星座
 ;; ----------------------------------------
 (import sys)
-(import [lib.string [substring]])
-(import [lib.operations [unique]])
-(import [lib.search [lower-bound]])
 
 (setv *hash* {})
 (setv *tmp* {})

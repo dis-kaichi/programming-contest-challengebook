@@ -120,12 +120,12 @@
 | 最近点対問題 (UVa 10245)                        | Q4-6-3.hy                       | 326     |
 | 禁止文字列                                      | Q4-7-1.hy                       | 328-329 |
 | DNA Repair (POJ 3691)                           | Q4-7-2.hy                       | 330-331 |
-| 星座 (POJ 3690)                                 | Q4-7-3.hy                       | |
-| Sequence (POJ 3581) | | |
-| 共通部分文字列 (POJ 2217) | | |
-| 最長回文 | | |
-| Mine Layer (2008 World Final C) | | |
-| Year of More Code Jam (2009 World Final A) | | |
-| Football Team (2009 Round 3 C) | | |
-| Endless Knight (2008 Round3 D) | | |
-| The Year of Code Jam (2008 World Final E) | | |
+| 星座 (POJ 3690)                                 | Q4-7-3.hy                       | 335     |
+| Sequence (POJ 3581)                             | Q4-7-4.hy                       | 339     |
+| 共通部分文字列 (POJ 2217)                       | Q4-7-5.hy                       | 341     |
+| 最長回文                                        | Q4-7-6.hy                       | 342     |
+| Mine Layer (2008 World Final C)                 | Q4-8-1.hy                       | 346-347 |
+| Year of More Code Jam (2009 World Final A)      | Q4-8-2.hy                       | 349     |
+| Football Team (2009 Round 3 C)                  | Q4-8-3.hy                       | 352-353 |
+| Endless Knight (2008 Round3 D)                  | Q4-8-4.hy                       | 356-357 |
+| The Year of Code Jam (2008 World Final E)       | Q4-8-5.hy                       | 359-360 |

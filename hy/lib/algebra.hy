@@ -149,33 +149,49 @@
 
 
 ;;; nの階乗
-;(setv *fact* {})
-;(defn init-mod-fact [n]
-;  ;; modの階乗を計算する必要があるので以下ではダメ
-;  (if (<= n 0)
-;    (do
-;      (assoc *fact* n 1)
-;      1)
-;    (do
-;      (if (in n *fact*)
-;        (get *fact* n)
-;        (do
-;          (setv res (* n (init-mod-fact (dec n))))
-;          (assoc *fact* n res)
-;          res)))))
-;;;  n != p^eとした時のa mod pを求める
-;(defn mod-fact [n p]
-;  (global *fact*)
-;  (setv e 0)
-;  (if (zero? n)
-;    (, 1 e)
-;    (do
-;      ;; pの倍数の部分を計算
-;      (setv (, res e) (mod-fact (// n p) p))
-;      (+= e (// n p))
-;
-;      ;; (p-1)!≡-1なので(p-1)!^(n/p)はn/pの偶奇だけで計算できる
-;      (if (not (zero? (% (// n p) 2)))
-;        (, (% (* res (- p (get *fact* (% n p)))) p) e)
-;        (, (% (* res (get *fact* (% n p))) p) e)))))
+(setv *fact* {})
+(defn init-fact [n p]
+  (global *fact*)
+  (assoc *fact* 0 1)
+  (assoc *fact* 1 1)
+  (loop [[i 2]
+         [res 1]]
+    (when (<= i n)
+      (setv ff (* i res))
+      (assoc *fact* i ff)
+      (recur (inc i) ff))))
 
+;;  n != p^eとした時のa mod pを求める
+(defn mod-fact [n p]
+  (global *fact*)
+  (setv e 0)
+  (if (zero? n)
+    (, 1 e)
+    (do
+      ;; pの倍数の部分を計算
+      (setv (, res e) (mod-fact (// n p) p))
+      (+= e (// n p))
+
+      ;; (p-1)!≡-1なので(p-1)!^(n/p)はn/pの偶奇だけで計算できる
+      (if (not (zero? (% (// n p) 2)))
+        (, (% (* res (- p (get *fact* (% n p)))) p) e)
+        (, (% (* res (get *fact* (% n p))) p) e)))))
+
+;; nCk mod pを求める
+(defn mod-comb [n k p]
+  (when (or (neg? n)
+            (neg? k)
+            (< n k))
+    (return 0))
+  (setv (, a1 e1) (mod-fact n p))
+  (setv (, a2 e2) (mod-fact k p))
+  (setv (, a3 e3) (mod-fact (- n k) p))
+  (if (> e1 (+ e2 e3))
+    0
+    (% (* a1 (mod-inverse (% (* a2 a3) p) p)) p)))
+
+
+;(init-fact 10 100)
+;;(print *fact*)
+;(print (mod-fact 4 100007))
+;(print (mod-comb 4 2 100007))
