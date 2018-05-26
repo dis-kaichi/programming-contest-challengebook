@@ -6,7 +6,7 @@
 (use '[clojure.tools.namespace.repl :only (refresh)])
 
 ;(use '[clj.q1-1 :only [solver]])
-(use '[clj.q1-1-6 :only [solver]])
+(use '[clj.q1-6-1 :only [solver]])
 
 (defn -main
   []
