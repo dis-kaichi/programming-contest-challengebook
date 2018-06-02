@@ -5,11 +5,19 @@
 ;; ----------------------------------------
 (import [lib.inpututils [split-with-space map-int]])
 
-(defn solver [data]
-  ;; Parameter
-  (setv n (-> data first int))
-  (setv a (-> data second split-with-space map-int))
-  ;; Main
+(defn parameter1 []
+  ;; Answer : 12
+  (setv N 5)
+  (setv A [2 3 4 5 10])
+  (, N A))
+
+(defn parameter2 []
+  ;; Answer : 0
+  (setv N 4)
+  (setv A [4 5 10 20])
+  (, N A))
+
+(defn solver [n a]
   (setv ans 0)
   (for [i (range n)]
     (for [j (range (inc i) n)]
@@ -25,17 +33,10 @@
   ans)
 
 (defn solve []
-  ;; Data
-  (setv data1
-        ["5"
-         "2 3 4 5 10"]) ;; 12
-  (setv data2
-        ["4"
-         "4 5 10 20"])  ;; 0
-  ;; Example1
-  (print "Example1 : " (solver data1))
-  ;; Example2
-  (print "Example2 : " (solver data2)))
+  ;; Parameters
+  (setv (, N A) (parameter1))
+  ;; Main
+  (print (solver N A)))
 
 (defmain
   [&rest args]

@@ -6,7 +6,7 @@
 (require [hy.contrib.loop [loop]])
 
 (setv data
-  ["10 12"
+  ["10 12" ;; 3
    "W........WW."
    ".WWW.....WWW"
    "....WW...WW."

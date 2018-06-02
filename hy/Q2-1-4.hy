@@ -26,7 +26,9 @@
    y 0]
   (defn --init-- [self x y]
     (setv self.x x)
-    (setv self.y y)))
+    (setv self.y y))
+  (defn --str-- [self]
+    (.format "[{0}, {1}]" (. self x) (. self y))))
 
 (defn create-matrix [n m]
   (list (map list (partition (* [+INF+] (* n m)) m))))
@@ -86,18 +88,19 @@
       (if (and (= gx p.x)
                (= gy p.y))
         (nthm +d+ gx gy) ;; break
-        (for [i (range 4)]
-          (setv nx (+ p.x (nth +dx+ i)))
-          (setv ny (+ p.y (nth +dy+ i)))
-          (when (and (<= 0 nx)
-                     (< nx +N+)
-                     (<= 0 ny)
-                     (< ny +M+)
-                     (!= "#" (nthm +maze+ nx ny))
-                     (= +INF+ (nthm +d+ nx ny)))
-            (.push que (P nx ny))
-            (setm! +d+ nx ny (inc (nthm +d+ p.x p.y)))
-            (recur)))))))
+        (do
+          (for [i (range 4)]
+            (setv nx (+ p.x (nth +dx+ i)))
+            (setv ny (+ p.y (nth +dy+ i)))
+            (when (and (<= 0 nx)
+                       (< nx +N+)
+                       (<= 0 ny)
+                       (< ny +M+)
+                       (!= "#" (nthm +maze+ nx ny))
+                       (= +INF+ (nthm +d+ nx ny)))
+              (.push que (P nx ny))
+              (setm! +d+ nx ny (inc (nthm +d+ p.x p.y)))))
+          (recur))))))
 
 (defn solve []
   (setv res (bfs))
