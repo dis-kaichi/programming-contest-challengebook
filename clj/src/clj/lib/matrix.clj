@@ -10,6 +10,12 @@
 (defn init [row col value-type]
   (reset! *matrix* (make-array value-type row col)))
 
+(defn dump []
+  (clojure.pprint/pprint *matrix*))
+
+;; ------------------------------
+;; Array
+;; ------------------------------
 (defn create-matrix [row col value-type]
   (make-array value-type row col))
 
@@ -33,6 +39,9 @@
     `(let [~a-sym ~nested-array]
        (aset ~a-sym ~idx ~v))))
 
+;; ------------------------------
+;; Map
+;; ------------------------------
 ;; 取得に失敗したらdefaultを返す
 (defn safe-get
   ([m x] (safe-get m x {}))
@@ -49,5 +58,6 @@
   ([matrix x y default]
    (-> matrix (safe-get x) (safe-get y default))))
 
-(defn dump []
-  (clojure.pprint/pprint *matrix*))
+;; deep-set for IAtom
+(defn deep-set! [matrix x y v]
+  (swap! matrix deep-set x y v))
