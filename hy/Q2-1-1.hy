@@ -15,7 +15,7 @@
     n
     (+ (fib (dec n)) (fib (dec (dec n))))))
 
-;; 3.1. メモ化(フィボナッチ)
+;; 3. メモ化(フィボナッチ)
 ;; (*) データをソートする必要がなければ辞書でメモ化するとよい
 (setv +memo+ {})
 (defn fib-memo [n]
@@ -28,25 +28,6 @@
         (assoc +memo+ n (+ (fib-memo (- n 1))
                            (fib-memo (- n 2))))
         (get +memo+ n)))))
-
-;; 3.2. メモ化(フィボナッチ)改良版
-(setv +memo2+ {})
-(defn fib-memo2 [x]
-  ;; 0から算出するので再帰で爆発しない
-  (loop [[n 0]
-         [prev1 0]
-         [prev2 1]]
-    (if (= n x)
-      (+ prev1 prev2)
-      (if (<= n 1)
-        (do
-          (assoc +memo2+ n n)
-          (recur (inc n) 0 1))
-        (do
-          (assoc +memo2+ n (+ prev1 prev2))
-          (recur (inc n)
-                 (get +memo2+ (- n 1))
-                 (get +memo2+ (- n 2))))))))
 
 ;; 4. スタック
 ;(defn push [_stack x]
